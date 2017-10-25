@@ -11,19 +11,35 @@ import Foundation
 class Caracters
 {
     var lifePoints: Int
-    var weapon : Weapon
+    var weapon : Weapons
     
-    func attack(weapon: Weapon, target: Caracters)
+    init(lifePoints: Int, weapon: Weapons)
     {
-        target.lifePoints -= weapon
+        self.lifePoints = lifePoints
+        self.weapon = weapon
+    }
+    
+    convenience init()
+    {
+        self.init(lifePoints: 100, weapon: bareHands)
+    }
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////
+    // MARK: MÉTHODES
+////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    func attack(weapon: Weapons, target: Caracters)
+    {
+        target.lifePoints -= weapon.damage
     }
     
     func newWeapon(caracter: Caracters)
     {
-        caracter.weapon = openChest(caracter)
+        caracter.weapon = openChest(warrior: caracter)
     }
     
 }
+
 
 
 
