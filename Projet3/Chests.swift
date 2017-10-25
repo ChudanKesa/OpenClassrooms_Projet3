@@ -21,7 +21,7 @@ enum Class
 func openChest(warrior: Caracters) -> Weapons
 {
     var weapon = Weapons()
-    var typeOfWeapon: Class
+    var typeOfWeapon = Class.warrior
     
     let swords =   [sword, saber, longsword, rapier]
     let axes = [axe, broadaxe, dual_axe, two_handed_axe]
@@ -44,22 +44,20 @@ func openChest(warrior: Caracters) -> Weapons
         errorLog(origin: "Chests", detail: "type of caracter could not be determined")
     }
     
-    // 2. change weapon to a new one of the right type
+    // 2. obtain weapon
     
-    var weaponSelect = Int(arc4random_uniform(UInt32(5)))
+    let weaponSelect = Int(arc4random_uniform(UInt32(5)))
     
     switch typeOfWeapon
     {
     case .warrior:
-        warrior.weapon = swords[weaponSelect]
+        weapon = swords[weaponSelect]
     case .dwarf:
-        warrior.weapon = axes[weaponSelect]
+        weapon = axes[weaponSelect]
     case .archer:
-        warrior.weapon = bows[weaponSelect]
+        weapon = bows[weaponSelect]
     case .wizzard:
-        warrior.weapon = staffs[weaponSelect]
-    default:
-        errorLog(origin: "Chests", detail: "weapon could not be assigned")
+        weapon = staffs[weaponSelect]
     }
     
     if weapon.name == "Axe"
@@ -72,6 +70,9 @@ func openChest(warrior: Caracters) -> Weapons
         print("You've obtained a new weapon : a \(weapon.name).")
     }
     
+    print("It causes \(weapon.damage) damage per hit.")
+    
     return weapon
+    
 }
 
