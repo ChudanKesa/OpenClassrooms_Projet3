@@ -23,6 +23,28 @@ class Weapons
     {
         self.init(name: "Bare Hands", damage: 3)
     }
+    
+    //////////////////////////////////////////////////////////
+    // MARK: METHODS
+    //////////////////////////////////////////////////////////
+    
+    func adressWeapon(weapon: Weapons) -> String
+    {
+        if weapon.name[weapon.name.index(weapon.name.startIndex, offsetBy: 0)] == "A" ||
+            weapon.name[weapon.name.index(weapon.name.startIndex, offsetBy: 0)] == "O" ||
+            weapon.name[weapon.name.index(weapon.name.startIndex, offsetBy: 0)] == "I" ||
+            weapon.name[weapon.name.index(weapon.name.startIndex, offsetBy: 0)] == "E" ||
+            weapon.name[weapon.name.index(weapon.name.startIndex, offsetBy: 0)] == "U" ||
+            weapon.name[weapon.name.index(weapon.name.startIndex, offsetBy: 0)] == "Y"
+        {
+            return "an \(weapon.name)"
+        }
+            
+        else
+        {
+            return "a \(weapon.name)"
+        }
+    }
 }
 
 let bareHands = Weapons()
@@ -47,5 +69,8 @@ let longbow = Weapons(name: "Longbow", damage: 11)
 let recurve_bow = Weapons(name: "Recurve bow", damage: 9)
 let compound_bow = Weapons(name: "Compound bow", damage: 13)
 
-
+let giant_bare_hands = Weapons(name: "Giant bare hands", damage: 4)
+let giant_damaged_hands = Weapons(name: "Giant damaged hands", damage: 3)
+let furious_giant_hands = Weapons(name: "Furous giant hands", damage: 9)
+let focused_giant_hands = Weapons(name: "Focused giant hands", damage: 7)
 

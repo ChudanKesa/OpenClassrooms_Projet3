@@ -9,5 +9,7 @@
 import Foundation
 
 
-var guerrier = Warrior()
+
+
+
 

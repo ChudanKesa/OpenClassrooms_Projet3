@@ -13,6 +13,8 @@
 		505177561FA09C220007C8E9 /* Chests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177551FA09C220007C8E9 /* Chests.swift */; };
 		505177581FA0ACB80007C8E9 /* Caracters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177571FA0ACB80007C8E9 /* Caracters.swift */; };
 		5051775A1FA0B6DA0007C8E9 /* ErrorsLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177591FA0B6D80007C8E9 /* ErrorsLog.swift */; };
+		5084F90E1FA1D0B300256A73 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084F90D1FA1D0B300256A73 /* Players.swift */; };
+		5084F9101FA1D12100256A73 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084F90F1FA1D12100256A73 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +37,8 @@
 		505177551FA09C220007C8E9 /* Chests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chests.swift; sourceTree = "<group>"; };
 		505177571FA0ACB80007C8E9 /* Caracters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caracters.swift; sourceTree = "<group>"; };
 		505177591FA0B6D80007C8E9 /* ErrorsLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsLog.swift; sourceTree = "<group>"; };
+		5084F90D1FA1D0B300256A73 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
+		5084F90F1FA1D12100256A73 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				505177521FA09AD60007C8E9 /* Caracters */,
 				505177551FA09C220007C8E9 /* Chests.swift */,
 				505177531FA09B9C0007C8E9 /* Weapons.swift */,
+				5084F90D1FA1D0B300256A73 /* Players.swift */,
+				5084F90F1FA1D12100256A73 /* Game.swift */,
 			);
 			path = Projet3;
 			sourceTree = "<group>";
@@ -146,9 +152,11 @@
 				505177541FA09B9C0007C8E9 /* Weapons.swift in Sources */,
 				5051775A1FA0B6DA0007C8E9 /* ErrorsLog.swift in Sources */,
 				505177561FA09C220007C8E9 /* Chests.swift in Sources */,
+				5084F90E1FA1D0B300256A73 /* Players.swift in Sources */,
 				505177511FA09ACD0007C8E9 /* Caracters_mother.swift in Sources */,
 				5051774A1FA073230007C8E9 /* main.swift in Sources */,
 				505177581FA0ACB80007C8E9 /* Caracters.swift in Sources */,
+				5084F9101FA1D12100256A73 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
