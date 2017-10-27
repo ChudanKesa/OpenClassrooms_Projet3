@@ -40,7 +40,7 @@ class Players
                 print("Choose your caracter n°\(i) :")
                 print("1. A Warrior. ⚔")
                 print(Caracters.caracterDescription(caste: .warrior))
-                print("2. A Wizzard. ⚕")
+                print("2. A Wizzard. 🔮")
                 print(Caracters.caracterDescription(caste: .wizzard))
                 print("3. A Giant. 👹")
                 print(Caracters.caracterDescription(caste: .giant))
@@ -126,6 +126,17 @@ class Players
                 else
                 {
                     print("Entry could not be read. Please try again.")
+                }
+            }
+            
+            if partyOK
+            {
+                for i in 0..<party.count
+                {
+                    if party[i].caste == .wizzard
+                    {
+                        (party[i] as! Wizzard).team = party
+                    }
                 }
             }
             

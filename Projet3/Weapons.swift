@@ -49,10 +49,10 @@ class Weapons
 
 let bareHands = Weapons()
 
-let axe = Weapons(name: "Axe", damage: 12)
-let broadaxe = Weapons(name: "Broadaxe", damage: 14)
-let dual_axe = Weapons(name: "Dual axe", damage: 11)
-let two_handed_axe = Weapons(name: "Two handed axe", damage: 18)
+let axe = Weapons(name: "Axe", damage: 14)
+let broadaxe = Weapons(name: "Broadaxe", damage: 16)
+let dual_axe = Weapons(name: "Dual axe", damage: 13)
+let two_handed_axe = Weapons(name: "Two handed axe", damage: 20)
 
 let sword = Weapons(name: "Sword", damage: 10)
 let longsword = Weapons(name: "Longsword", damage: 15)
@@ -71,6 +71,6 @@ let compound_bow = Weapons(name: "Compound bow", damage: 13)
 
 let giant_bare_hands = Weapons(name: "Giant bare hands", damage: 4)
 let giant_damaged_hands = Weapons(name: "Giant damaged hands", damage: 3)
-let furious_giant_hands = Weapons(name: "Furous giant hands", damage: 9)
+let furious_giant_hands = Weapons(name: "Furous giant hands", damage: 8)
 let focused_giant_hands = Weapons(name: "Focused giant hands", damage: 7)
 

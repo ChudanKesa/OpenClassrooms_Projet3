@@ -8,21 +8,11 @@
 
 import Foundation
 
-enum Class
-{
-    case warrior
-    case dwarf
-    case archer
-    case wizzard
-    case giant
-}
+// -> randomly create the object Chest and then decide to open it or not
 
-
-
-func openChest(warrior: Caracters) -> Weapons
+func openChest(caste: Caracters.Class) -> Weapons
 {
     var weapon = Weapons()
-    var typeOfWeapon = Class.warrior
     
     let swords = [sword, saber, longsword, rapier]
     let axes = [axe, broadaxe, dual_axe, two_handed_axe]
@@ -30,29 +20,10 @@ func openChest(warrior: Caracters) -> Weapons
     let staffs = [staff, sacred_oak, wand, long_staff]
     let hands = [giant_bare_hands, giant_damaged_hands, furious_giant_hands, focused_giant_hands]
     
-    // 1. determine type of caracter
-    
-    switch warrior
-    {
-    case is Warrior:
-        typeOfWeapon = .warrior
-    case is Dwarf:
-        typeOfWeapon = .dwarf
-    case is Archer:
-        typeOfWeapon = .archer
-    case is Wizzard:
-        typeOfWeapon = .wizzard
-    case is Giant:
-        typeOfWeapon = .giant
-    default:
-        errorLog(origin: "Chests", detail: "type of caracter could not be determined")
-    }
-    
-    // 2. obtain weapon
     
     let weaponSelect = Int(arc4random_uniform(UInt32(4)))
     
-    switch typeOfWeapon
+    switch caste
     {
     case .warrior:
         weapon = swords[weaponSelect]
@@ -64,10 +35,14 @@ func openChest(warrior: Caracters) -> Weapons
         weapon = staffs[weaponSelect]
     case .giant:
         weapon = hands[weaponSelect]
+    default:
+        errorLog(origin: "Chests", detail: "litterarly one thing can go wrong here")
     }
     
-    print("You've obtained a new weapon : \(Weapons.adressWeapon(weapon)).")
-    print("It causes \(weapon.damage) damage per hit.")
+    print("A magical treasure chest appeared before you !")
+    print("You open it and take its contents")
+    print("You've obtained a new weapon : \(weapon.adressWeapon(weapon: weapon)).")
+    print("It causes \(weapon.damage) damage per hit.\n")
     
     return weapon
     

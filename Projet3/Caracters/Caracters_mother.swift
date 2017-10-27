@@ -47,7 +47,15 @@ class Caracters
     {
         target.lifePoints -= weapon.damage
         print("The attack was effective. \(target.name) has taken \(weapon.damage) points of damage.")
-        print("He has \(target.lifePoints) life points left.\n")
+        if target.lifePoints > 0
+        {
+            print("He has \(target.lifePoints) life points left.\n")
+        }
+        else
+        {
+            target.lifePoints = 0
+            print("He has \(target.lifePoints) life points left.\n")
+        }
     }
     
 // ----------------------------
@@ -55,7 +63,7 @@ class Caracters
     
     func newWeapon(caracter: Caracters)
     {
-        caracter.weapon = openChest(warrior: caracter)
+        caracter.weapon = openChest(caste: caracter.caste)
     }
     
 // -----------------------------

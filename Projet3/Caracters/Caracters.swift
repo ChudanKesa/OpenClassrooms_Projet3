@@ -24,6 +24,9 @@ class Warrior: Caracters
 
 class Wizzard: Caracters
 {
+    var power = Healing()
+    var team = [Caracters]() // <- to use as target for multiHeal
+    
     init()
     {
         super.init(lifePoints: 90, weapon: staff, name: "")
@@ -32,6 +35,18 @@ class Wizzard: Caracters
         name = askForName()
         print("This Wizzard shall be called \(name).")
         print("You are currently equiped with \(weapon.adressWeapon(weapon: weapon)), which causes \(weapon.damage) damage per turn.\n")
+        
+    }
+}
+
+class TrainingWheelzard: Caracters
+{
+    var power = Healing()
+    var team = [Caracters]()
+    
+    init()
+    {
+        super.init(lifePoints: 90, weapon: staff, name: "Gandalf")
     }
 }
 
@@ -39,7 +54,7 @@ class Giant: Caracters
 {
     init()
     {
-        super.init(lifePoints: 150, weapon: giant_bare_hands, name: "")
+        super.init(lifePoints: 210, weapon: giant_bare_hands, name: "")
         caste = .giant
         print("Choose a name for your Giant :")
         name = askForName()
