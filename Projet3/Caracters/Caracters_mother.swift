@@ -22,13 +22,17 @@ class Caracters
     }
     
     var lifePoints: Int
+    var maxLifePoints: Int
     var weapon : Weapons
     var name: String
     var caste: Class
     
+    var auto = false
+    
     init(lifePoints: Int, weapon: Weapons, name: String)
     {
         self.lifePoints = lifePoints
+        maxLifePoints = lifePoints
         self.weapon = weapon
         self.name = name
         self.caste = .none
@@ -47,15 +51,13 @@ class Caracters
     {
         target.lifePoints -= weapon.damage
         print("The attack was effective. \(target.name) has taken \(weapon.damage) points of damage.")
-        if target.lifePoints > 0
-        {
-            print("He has \(target.lifePoints) life points left.\n")
-        }
-        else
+        if target.lifePoints < 0
         {
             target.lifePoints = 0
-            print("He has \(target.lifePoints) life points left.\n")
         }
+        
+        print("He has \(target.lifePoints) life points left.")
+        target.lifeBar(caracter: target)
     }
     
 // ----------------------------
@@ -64,6 +66,10 @@ class Caracters
     func newWeapon(caracter: Caracters)
     {
         caracter.weapon = openChest(caste: caracter.caste)
+        if caracter is Wizzard
+        {
+            (caracter as! Wizzard).power.weapon = caracter.weapon
+        }
     }
     
 // -----------------------------
@@ -74,6 +80,8 @@ class Caracters
         var read: String?
         var error = true
         
+        
+        
         while error
         {
             read = readLine()
@@ -81,6 +89,10 @@ class Caracters
             if read != nil
             {
                 name = read!
+                if name == ""
+                {
+                    name = randomNames()
+                }
                 error = false
             }
             else
@@ -92,6 +104,7 @@ class Caracters
         
         return name
     }
+    
     
 // --------------------------------
     
@@ -110,9 +123,9 @@ class Caracters
         case .wizzard:
             description = "Not so much of a fighter, but he can heal his comrades. His staff does 5 damage, and he has 90 life points."
         case .giant:
-            description = "He doesn't hit hard, but he lasts long. No weapon is fit for him, but his bare hands do 4 damage. He has 150 life points."
+            description = "He doesn't hit hard, but he lasts long. No weapon is fit for him, but his bare hands do 4 damage. He has 210 life points."
         case .dwarf:
-            description = "A proud warrior from the mountains. His 70 life points will keep your wizzards busy, but his 12-damage axe will burden the opponent."
+            description = "A proud warrior from the mountains. His 70 life points will keep your wizzards busy, but his 14-damage axe will burden the opponent."
         case .archer:
             description = "A long-ranged, supportive fighter."
         default:
@@ -138,7 +151,7 @@ class Caracters
             case .warrior:
                 return "an \(caracter.caste.rawValue) ⚔"
             case .wizzard:
-                return "an \(caracter.caste.rawValue)⚕"
+                return "an \(caracter.caste.rawValue) 🔮"
             case .giant:
                 return "an \(caracter.caste.rawValue) 👹"
             case .dwarf:
@@ -156,7 +169,7 @@ class Caracters
             case .warrior:
                 return "a \(caracter.caste.rawValue) ⚔"
             case .wizzard:
-                return "a \(caracter.caste.rawValue)⚕"
+                return "a \(caracter.caste.rawValue) 🔮"
             case .giant:
                 return "a \(caracter.caste.rawValue) 👹"
             case .dwarf:

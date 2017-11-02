@@ -8,7 +8,6 @@
 
 import Foundation
 
-// -> randomly create the object Chest and then decide to open it or not
 
 func openChest(caste: Caracters.Class) -> Weapons
 {

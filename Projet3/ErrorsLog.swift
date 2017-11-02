@@ -13,5 +13,4 @@ func errorLog(origin: String, detail: String)
     print("**************************************")
     print("\tError in file \(origin) : '\(detail)'.")
     print("**************************************")
-    
 }
