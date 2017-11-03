@@ -160,18 +160,17 @@ func cheat() // now that the game works and i just have to change a few minor th
     var alsoselect = Int()
     var number = 1
 
-        print("Wich caracter shall we modify ?")
+        print("Wich caracter's life shall we modify ?")
         for i in 0..<game.players.count
         {
             for j in 0..<game.players[i].party.count
             {
-                print("\(number). \(game.players[i].name)'s \(game.players[i].party[j].adressCaracter(caracter: game.players[i].party[j]))")
+                print("\(number). \(game.players[i].name)'s \(game.players[i].party[j].caste.rawValue) : \(game.players[i].party[j].name)", terminator: " "); game.players[i].party[j].symbol(caste: game.players[i].party[j]); print("")
                 tab.append(game.players[i].party[j])
                 number += 1
             }
         }
         
-        print("tab.count = \(tab.count)")
         select = askForInt(lowerLimit: 1, upperLimit: tab.count)
         print("How many LP do you want ?")
         alsoselect = askForInt(lowerLimit: 0, upperLimit: 1000)

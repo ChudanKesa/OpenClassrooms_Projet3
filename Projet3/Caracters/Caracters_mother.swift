@@ -65,7 +65,7 @@ class Caracters
     
     func newWeapon(caracter: Caracters)
     {
-        caracter.weapon = openChest(caste: caracter.caste)
+        caracter.weapon = Chest.openChest(caste: caracter.caste)
         if caracter is Wizzard
         {
             (caracter as! Wizzard).power.weapon = caracter.weapon

@@ -277,6 +277,15 @@ class Game
                             target = targetsRepository[alsoselect-1]
                         }
                         
+                        switch Int(arc4random_uniform(UInt32((2))))
+                        {
+                        case 0:
+                            players[i].party[select-1].newWeapon(caracter: players[i].party[select-1])
+                        case 1:
+                            break
+                        default:
+                            errorLog(origin: "\(#file)", detail: "\(#line)")
+                        }
                         players[i].party[select-1].attack(weapon: players[i].party[select-1].weapon, target: target)
                         
                         for _ in 0..<targetsRepository.count
@@ -438,6 +447,15 @@ class Game
                         target = targetsRepository[alsoselect-1]
                     }
                     
+                    switch Int(arc4random_uniform(UInt32((2))))
+                    {
+                    case 0:
+                        players[i].party[select-1].newWeapon(caracter: players[i].party[select-1])
+                    case 1:
+                        break
+                    default:
+                        errorLog(origin: "\(#file)", detail: "\(#line)")
+                    }
                     players[i].party[select-1].attack(weapon: players[i].party[select-1].weapon, target: target)
                     
                     
@@ -501,7 +519,7 @@ class Game
                         players[deceased[t].0].party.remove(at: deceased[t].1)
                     }
                 }
-            } // if totalEnnemies >= 1
+            } // if totalEnnemies >= 1 && totalAllies > 0
             
         } // for i in 0_players.count
     }
