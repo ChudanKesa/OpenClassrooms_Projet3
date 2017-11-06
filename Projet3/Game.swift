@@ -20,6 +20,11 @@ class Game
         var trySecondInputAgain = true // -> so the Y/N confirmation can be looped without asking for numberOfPlayers again
         var numberOfPlayers = 0
         
+        for i in (0..<players.count).reversed()
+        {
+            players.remove(at: i)
+        }
+        
         print("How many people are playing ?")
         
         while tryInputAgain
@@ -143,6 +148,7 @@ class Game
         {
             players[i].chooseParty()
         }
+        localisation(origin: "\(#file)", detail: "\(#line)")
         
     } // stargame()
     
@@ -200,6 +206,7 @@ class Game
                     }
                 }
                 print("\(players[i].name), it's your turn.")
+                usleep(1 * 100 * 1000)
                 if powerPresent == true
                 {
                     print("What will you do ?")
@@ -253,6 +260,7 @@ class Game
                         else
                         {
                             print("Choose your target :")
+                            usleep(1 * 100 * 1000)
                             for j in 0..<players.count
                             {
                                 for y in 0..<players[j].party.count
@@ -263,11 +271,13 @@ class Game
                                         {
                                             targetsRepository.append(players[j].party[y])
                                             print("\(targetsRepository.count). \(players[j].name)'s \(players[j].party[y].name)", terminator: " "); players[j].party[y].symbol(caste: players[j].party[y]); print(players[j].party[y].percent(life: players[j].party[y]))
+                                            usleep(1 * 100 * 1000)
                                         }
                                         else
                                         {
                                             targetsRepository.append(players[j].party[y])
                                             print("\(targetsRepository.count). \(players[j].party[y].name)", terminator: " "); players[j].party[y].symbol(caste: players[j].party[y]); print(players[j].party[y].percent(life: players[j].party[y]))
+                                            usleep(1 * 100 * 1000)
                                         }
                                     }
                                 }
@@ -286,6 +296,7 @@ class Game
                         default:
                             errorLog(origin: "\(#file)", detail: "\(#line)")
                         }
+                        
                         players[i].party[select-1].attack(weapon: players[i].party[select-1].weapon, target: target)
                         
                         for _ in 0..<targetsRepository.count
@@ -301,8 +312,10 @@ class Game
                                 if players[i].party[powerPosition[0]].weapon.name == "Long staff"
                                 {
                                     print("Thanks to his Long staff, \(players[i].party[powerPosition[0]].name) will heal the entire party !")
+                                    usleep(5 * 100 * 1000)
                                     (players[i].party[powerPosition[0]] as! Wizzard).power.multHealing(target: players[i].party)
                                     print("\tThe party got healed !")
+                                    usleep(1 * 100 * 1000)
                                     for y in 0..<players[i].party.count
                                     {
                                         print("\(players[i].party[y].name) has \(players[i].party[y].lifePoints) life points.")
@@ -314,13 +327,16 @@ class Game
                                     print("Who do you want to heal ?")
                                     for y in 0..<players[i].party.count
                                     {
+                                        usleep(1 * 100 * 1000)
                                         print("\(y+1). \(players[i].party[y].name)", terminator: " "); players[i].party[y].symbol(caste: players[i].party[y]); print(players[i].party[y].percent(life: players[i].party[y]))
                                     }
                                     select = secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
                                     target = players[i].party[select-1]
                                     print("\(players[i].party[powerPosition[0]].name) uses \((players[i].party[powerPosition[0]] as! Wizzard).power.useHeal(target: target)) on \(target.name) !")
+                                    usleep(1 * 100 * 1000)
                                     print("\(target.name) has \(target.lifePoints) life points.")
                                     target.lifeBar(caracter: target)
+                                    usleep(1 * 1000 * 1000)
                                 }
                             } // if caracter is Wizzard -> useless for now but will be used when powers are added
                             
@@ -330,6 +346,7 @@ class Game
                             print("Choose who is going to use a power :")
                             for y in 0..<powerPosition.count
                             {
+                                usleep(1 * 100 * 1000)
                                 print("\(y+1).", terminator:" "); players[i].party[powerPosition[y]].symbol(caste: players[i].party[powerPosition[y]]); print(" \(players[i].party[powerPosition[y]].name)")
                             }
                             select = secureInt(lowerLimit: 1, upperLimit: powerPosition.count)
@@ -341,8 +358,10 @@ class Game
                                 if players[i].party[select].weapon.name == "Long staff"
                                 {
                                     print("Thanks to his Long staff, \(players[i].party[select].name) will heal the entire party !")
+                                    usleep(5 * 100 * 1000)
                                     (players[i].party[select] as! Wizzard).power.multHealing(target: players[i].party)
                                     print("\tThe party got healed !")
+                                    usleep(1 * 100 * 1000)
                                     for y in 0..<players[i].party.count
                                     {
                                         print("\(players[i].party[y].name) has \(players[i].party[y].lifePoints) life points.")
@@ -354,13 +373,16 @@ class Game
                                     print("Who do you want to heal ?")
                                     for y in 0..<players[i].party.count
                                     {
+                                        usleep(1 * 100 * 1000)
                                         print("\(y+1). \(players[i].party[y].name)", terminator: " "); players[i].party[y].symbol(caste: players[i].party[y]); print(players[i].party[y].percent(life: players[i].party[y]))
                                     }
                                     alsoselect = secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
                                     target = players[i].party[alsoselect-1]
                                     print("\(players[i].party[select].name) uses \((players[i].party[select] as! Wizzard).power.useHeal(target: target)) on \(target.name) !")
+                                    usleep(1 * 100 * 1000)
                                     print("\(target.name) has \(target.lifePoints) life points.")
                                     target.lifeBar(caracter: target)
+                                    usleep(1 * 1000 * 1000)
                                 }
                             default:
                                 errorLog(origin: "Game", detail: "l.\(#line) : power choice")
@@ -388,6 +410,7 @@ class Game
                         
                         for j in 0..<players[i].party.count
                         {
+                            usleep(1 * 100 * 1000)
                             print("\(j+1).", terminator: " "); players[i].party[j].symbol(caste: players[i].party[j]); print(" \(players[i].party[j].name)")
                         }
                         
@@ -431,11 +454,13 @@ class Game
                                 {
                                     if players.count > 2
                                     {
+                                        usleep(1 * 100 * 1000)
                                         targetsRepository.append(players[j].party[y])
                                         print("\(targetsRepository.count). \(players[j].name)'s \(players[j].party[y].name)", terminator: " "); players[j].party[y].symbol(caste: players[j].party[y]); print(players[j].party[y].percent(life: players[j].party[y]))
                                     }
                                     else
                                     {
+                                        usleep(1 * 100 * 1000)
                                         targetsRepository.append(players[j].party[y])
                                         print("\(targetsRepository.count). \(players[j].party[y].name)", terminator: " "); players[j].party[y].symbol(caste: players[j].party[y]); print(players[j].party[y].percent(life: players[j].party[y]))
                                     }
@@ -487,27 +512,37 @@ class Game
                         {
                             if !players[e].lastOneStanding
                             {
+                                print("\n\t", terminator: "")
                                 switch Int(arc4random_uniform(UInt32(6)))
                                 {
                                 case 0:
                                     print("Tough luck for \(players[e].name) ! \(players[e].party[j].name) just died !\n")
+                                    usleep(15 * 100 * 1000)
                                 case 1:
                                     print("Sorry, \(players[e].name) ! \(players[e].party[j].name) did his best.\n")
+                                    usleep(15 * 100 * 1000)
                                 case 2:
                                     print("One warrior down : \(players[e].party[j].name) left the game.\n")
+                                    usleep(15 * 100 * 1000)
                                 case 3:
                                     print("\(players[e].name) will have to do with one less player !\n")
+                                    usleep(15 * 100 * 1000)
                                 case 4:
                                     print("\(players[e].party[j].name) down ! How will \(players[e].name) react ?\n")
+                                    usleep(15 * 100 * 1000)
                                 default:
                                     print("\(players[e].party[j].name) left this world...\n")
+                                    usleep(15 * 100 * 1000)
                                 }
                                 deceased.append((e, j))
                             }
                             else
                             {
-                                print("Oh no ! \(players[e].party[0].name) is dying !")
+                                sleep(1)
+                                print("\nOh no ! \(players[e].party[0].name) is dying !")
+                                usleep(1 * 100 * 1000)
                                 print("He muster the strenght for one last strike !")
+                                sleep(1)
                             }
                         }
                     }
@@ -529,32 +564,110 @@ class Game
     // MARK: ATTACK PATTERN OK
     // -> Every player in players has an action once
     
-    func finishGame(tab: [Players])
+    func finishGame(tab: [Players]) -> Bool
     {
         var players = tab
         var victory = false
         
-        
-        while !victory
-        {
-            playGame(players: players)
+   //     while game.keepPlaying
+   //     {
+            victory = false
             
-            for i in 0..<players.count
+            while !victory
             {
-                if players[i].party.count == 0
+                game.playGame(players: game.players)
+                
+                for i in 0..<players.count
                 {
-                    print("\(players[i].name)'s party was defeated...")
-                    print("\(players[i].name) lost.")
-                    players.remove(at: i)
+                    if players[i].party.count == 0
+                    {
+                        print("\n\t")
+                        slowWriting(sentence: "\(players[i].name)'s party was defeated...")
+                        sleep(1)
+                        print("\t", terminator: "")
+                        slowWriting(sentence: "\(players[i].name) lost.")
+                        players.remove(at: i)
+                        localisation(origin: "\(#file)", detail: "\(#line)")
+                    }
                 }
-            }
-            
-            if players.count == 1
-            {
-                print(" **\\o/**\\o/**\\o/**\\o/**")
-                print("\tCongratulations, \(players[0].name) ! You vanquished your opponents. This game is yours !")
-                victory = true
-            }
+                
+                if players.count == 1
+                {
+                    print("\n")
+                    sleep(1)
+                    print("\n")
+                    sleep(1)
+                    print(" **\\o/**\\o/**\\o/**\\o/**")
+                    print("\t", terminator: "")
+                    slowWriting(sentence: "Congratulations, \(players[0].name) ! You vanquished your opponents. This game is yours !")
+                    print("\n")
+                    sleep(1)
+                    print("\n")
+                    sleep(1)
+                    print("Do you want to play again ?\nY/N")
+                    switch askYN()
+                    {
+                    case "y":
+                        game.keepPlaying = true
+                        print("Prepare !")
+                        sleep(1)
+                        print("")
+                        sleep(1)
+                        print("")
+                        players.remove(at: 0)
+                        localisation(origin: "\(#file)", detail: "\(#line)")
+                    case "Y":
+                        game.keepPlaying = true
+                        print("Prepare !")
+                        sleep(1)
+                        print("")
+                        sleep(1)
+                        print("")
+                        players.remove(at: 0)
+                        localisation(origin: "\(#file)", detail: "\(#line)")
+                    case "n":
+                        game.keepPlaying = false
+                        print("\t************\n\t", terminator: "")
+                        print("Thanks for playing !")
+                        print("\n")
+                        sleep(1)
+                        print("")
+                        sleep(1)
+                        print("")
+                    case "N":
+                        game.keepPlaying = false
+                        print("\t************\n\t", terminator: "")
+                        print("Thanks for playing !")
+                        print("\n")
+                        sleep(1)
+                        print("")
+                        sleep(1)
+                        print("")
+                    default:
+                        errorLog(origin: "\(#file)", detail: "\(#line)")
+                    }
+                    
+                    
+                    
+                    victory = true
+                }
+                localisation(origin: "\(#file)", detail: "\(#line)")
+            } // while !victory
+            localisation(origin: "\(#file)", detail: "\(#line)")
+      //  }
+        
+        return keepPlaying
+    }
+    
+    func allGame()
+    {
+        var keepPlaying = true
+        
+        while keepPlaying
+        {
+            game.startGame()
+            game.playGame(players: game.players)
+            keepPlaying = game.finishGame(tab: game.players)
         }
     }
     

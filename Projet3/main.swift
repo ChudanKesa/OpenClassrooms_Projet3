@@ -10,12 +10,7 @@ import Foundation
 
 let game = Game() // DO NOT TOUCH THAT
 
-game.startGame()
-game.playGame(players: game.players)
-game.finishGame(tab: game.players)
+game.allGame()
 
-
-
-// sleep
 
 

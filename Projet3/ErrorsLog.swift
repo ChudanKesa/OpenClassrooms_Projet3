@@ -14,3 +14,10 @@ func errorLog(origin: String, detail: String)
     print("\tError in file \(origin) : '\(detail)'.")
     print("**************************************")
 }
+
+
+func localisation(origin: String, detail: String)
+{
+    print("We're here : \(origin) : \(detail)")
+}
+

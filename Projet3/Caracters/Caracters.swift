@@ -18,7 +18,9 @@ class Warrior: Caracters
         print("Choose a name for your Warrior (press entry for random name) :")
         name = askForName()
         print("This Warrior shall be called \(name).")
+        usleep(8 * 100 * 1000)
         print("He is currently equiped with \(weapon.adressWeapon(weapon: weapon)), which causes \(weapon.damage) damage per turn.\n")
+        usleep(20 * 100 * 1000)
     }
     
     init(auto: Bool)
@@ -43,7 +45,9 @@ class Wizzard: Caracters
         print("Choose a name for your Wizzard (press entry for random name) :")
         name = askForName()
         print("This Wizzard shall be called \(name).")
+        usleep(8 * 100 * 1000)
         print("He is currently equiped with \(weapon.adressWeapon(weapon: weapon)), which causes \(weapon.damage) damage per turn.\n")
+        usleep(20 * 100 * 1000)
     }
     
     init(auto: Bool)
@@ -65,7 +69,9 @@ class Giant: Caracters
         print("Choose a name for your Giant (press entry for random name) :")
         name = askForName()
         print("This Giant shall be called \(name).")
+        usleep(8 * 100 * 1000)
         print("He is currently equiped with \(weapon.adressWeapon(weapon: weapon)), which causes \(weapon.damage) damage per turn.\n")
+        usleep(20 * 100 * 1000)
     }
     
     init(auto: Bool)
@@ -85,7 +91,9 @@ class Dwarf: Caracters
         print("Choose a name for your Dwarf (press entry for random name) :")
         name = askForName()
         print("This Dwarf shall be called \(name).")
+        usleep(8 * 100 * 1000)
         print("He is currently equiped with \(weapon.adressWeapon(weapon: weapon)), which causes \(weapon.damage) damage per turn.\n")
+        usleep(20 * 100 * 1000)
     }
     
     init(auto: Bool)
@@ -105,7 +113,9 @@ class Archer: Caracters
         print("Choose a name for your Archer (press entry for random name) :")
         name = askForName()
         print("This Archer shall be called \(name).")
+        usleep(8 * 100 * 1000)
         print("He is currently equiped with \(weapon.adressWeapon(weapon: weapon)), which causes \(weapon.damage) damage per turn.\n")
+        usleep(20 * 100 * 1000)
     }
     
     init(auto: Bool)

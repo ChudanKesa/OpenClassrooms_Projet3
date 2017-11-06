@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		503DD31A1FABA12F009DDBDF /* RandomNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DD3191FABA12F009DDBDF /* RandomNames.swift */; };
+		504C75F11FACA846000E7E6F /* SlowWriting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C75F01FACA846000E7E6F /* SlowWriting.swift */; };
 		5051774A1FA073230007C8E9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177491FA073230007C8E9 /* main.swift */; };
 		505177511FA09ACD0007C8E9 /* Caracters_mother.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177501FA09ACD0007C8E9 /* Caracters_mother.swift */; };
 		505177541FA09B9C0007C8E9 /* Weapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177531FA09B9C0007C8E9 /* Weapons.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		503DD3191FABA12F009DDBDF /* RandomNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNames.swift; sourceTree = "<group>"; };
+		504C75F01FACA846000E7E6F /* SlowWriting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowWriting.swift; sourceTree = "<group>"; };
 		505177461FA073230007C8E9 /* Projet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		505177491FA073230007C8E9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		505177501FA09ACD0007C8E9 /* Caracters_mother.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caracters_mother.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				50724CA11FA622230073A220 /* Images.swift */,
 				503DD3191FABA12F009DDBDF /* RandomNames.swift */,
 				50724CA31FA645580073A220 /* SafeReadLine().swift */,
+				504C75F01FACA846000E7E6F /* SlowWriting.swift */,
 			);
 			path = "Supporting functions";
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				5084F90E1FA1D0B300256A73 /* Players.swift in Sources */,
 				505177511FA09ACD0007C8E9 /* Caracters_mother.swift in Sources */,
 				5051774A1FA073230007C8E9 /* main.swift in Sources */,
+				504C75F11FACA846000E7E6F /* SlowWriting.swift in Sources */,
 				505177581FA0ACB80007C8E9 /* Caracters.swift in Sources */,
 				5084F9101FA1D12100256A73 /* Game.swift in Sources */,
 			);

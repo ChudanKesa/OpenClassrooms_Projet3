@@ -84,12 +84,16 @@ class Players
                 for i in 1...3
                 {
                     print("Choose your caracter n°\(i) :")
+                    usleep(12 * 100 * 1000)
                     print("1. A Warrior. ⚔")
                     print(Caracters.caracterDescription(caste: .warrior))
+                    usleep(10 * 100 * 1000)
                     print("2. A Wizzard. 🔮")
                     print(Caracters.caracterDescription(caste: .wizzard))
+                    usleep(10 * 100 * 1000)
                     print("3. A Giant. 👹")
                     print(Caracters.caracterDescription(caste: .giant))
+                    usleep(10 * 100 * 1000)
                     print("4. A Dwarf. 🍺")
                     print(Caracters.caracterDescription(caste: .dwarf))
                     
@@ -110,18 +114,22 @@ class Players
             }
             
             
-            
+            usleep(1 * 100 * 1000)
             print("Your warriors has been chosen. You will fight with ")
+            usleep(10 * 100 * 1000)
             for i in 1...3
             {
                 switch i
                 {
                 case 1:
                     print("\(party[i-1].name), \(party[i-1].adressCaracter(caracter: party[i-1]))")
+                    usleep(9 * 100 * 1000)
                 case 2:
                     print("\(party[i-1].name), \(party[i-1].adressCaracter(caracter: party[i-1]))")
+                    usleep(9 * 100 * 1000)
                 case 3:
                     print("and \(party[i-1].name), \(party[i-1].adressCaracter(caracter: party[i-1])).")
+                    usleep(9 * 100 * 1000)
                 default:
                     errorLog(origin: "Players", detail: "Switch 'i' would not read")
                 }
@@ -132,19 +140,24 @@ class Players
             switch askYN()
             {
             case "Y":
-                print("\tYour party has been decided. May the odds ever be with you.\n")
+                usleep(1 * 100 * 1000)
+                print("\n\tYour party has been decided. May the odds ever be with you.\n")
+                usleep(20 * 100 * 1000)
                 partyOK = true
             case "y":
                 print("\n\tYour party has been decided. May the odds ever be with you.\n")
+                usleep(10 * 100 * 1000)
                 partyOK = true
             case "N":
                 print("Let us try again.")
+                usleep(1 * 100 * 1000)
                 for _ in 0..<party.count
                 {
                     party.remove(at: 0)
                 }
             case "n":
                 print("Let us try again.")
+                usleep(1 * 100 * 1000)
                 for _ in 0..<party.count
                 {
                     party.remove(at: 0)
@@ -153,7 +166,7 @@ class Players
                 errorLog(origin: "Players", detail: "\(#line) switch")
             }
 
-            
+            localisation(origin: "\(#file)", detail: "\(#line)")
             if partyOK
             {
                 for i in 0..<party.count
@@ -161,6 +174,7 @@ class Players
                     if party[i].caste == .wizzard
                     {
                         (party[i] as! Wizzard).team = party
+                        localisation(origin: "\(#file)", detail: "\(#line)")
                     }
                 }
             }
