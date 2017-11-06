@@ -37,7 +37,7 @@ class Chest
         case .giant:
             weapon = hands[weaponSelect]
         default:
-            errorLog(origin: "Chests", detail: "litterarly one thing can go wrong here")
+            Support.errorLog(origin: "Chests", detail: "litterarly one thing can go wrong here")
         }
         
         print("A magical treasure chest appeared before you !")

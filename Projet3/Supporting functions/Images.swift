@@ -30,7 +30,7 @@ extension Caracters
             total = 70
             sign = "🍺"
         default:
-            errorLog(origin: "Images", detail: "switch caracter.caste")
+            Support.errorLog(origin: "Images", detail: "switch caracter.caste")
         }
         
         let actualLife = (((caracter.lifePoints)*100)/total)/2
@@ -77,7 +77,7 @@ extension Caracters
         case .dwarf:
             print("🍺", terminator: "")
         default:
-            errorLog(origin: "Images", detail: "func symbol -> switch")
+            Support.errorLog(origin: "Images", detail: "func symbol -> switch")
         }
     }
     

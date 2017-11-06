@@ -8,36 +8,39 @@
 
 import Foundation
 
-func slowWriting(sentence: String)
+extension Support
 {
-    var index = sentence.index(sentence.startIndex, offsetBy: 4)
-    var lettre = sentence[index]
-    var time: useconds_t = 5 * 100 * 100 // 0.0Xs
-    var min = Int()
-    
-    for t in 0..<sentence.count
+    static func slowWriting(sentence: String)
     {
-        index = sentence.index(sentence.startIndex, offsetBy: t)
-        lettre = sentence[index]
+        var index = sentence.index(sentence.startIndex, offsetBy: 4)
+        var lettre = sentence[index]
+        var time: useconds_t = 5 * 100 * 100 // 0.0Xs
+        var min = Int()
         
-        if lettre != " " && lettre != "!" && lettre != "." && lettre != "," && lettre != ":"
+        for t in 0..<sentence.count
         {
-            min = Int(arc4random_uniform(UInt32(20)))
-            if min < 5
+            index = sentence.index(sentence.startIndex, offsetBy: t)
+            lettre = sentence[index]
+            
+            if lettre != " " && lettre != "!" && lettre != "." && lettre != "," && lettre != ":"
             {
-                min = 5
+                min = Int(arc4random_uniform(UInt32(20)))
+                if min < 5
+                {
+                    min = 5
+                }
+                time = useconds_t(min * 100 * 100)
+                usleep(time)
+                print(lettre, terminator: "")
             }
-            time = useconds_t(min * 100 * 100)
-            usleep(time)
-            print(lettre, terminator: "")
+            else
+            {
+                usleep(100000)
+                print(lettre, terminator: "")
+            }
         }
-        else
-        {
-            usleep(100000)
-            print(lettre, terminator: "")
-        }
+        print("")
+        
     }
-    print("")
-    
 }
 

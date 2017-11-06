@@ -9,6 +9,7 @@
 import Foundation
 
 let game = Game() // DO NOT TOUCH THAT
+let support = Support()
 
 game.allGame()
 

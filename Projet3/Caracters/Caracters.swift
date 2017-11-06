@@ -27,7 +27,7 @@ class Warrior: Caracters
     {
         super.init(lifePoints: 100, weapon: sword, name: "")
         caste = .warrior
-        name = randomNames()
+        name = Support.randomNames()
     }
 }
 
@@ -54,7 +54,7 @@ class Wizzard: Caracters
     {
         super.init(lifePoints: 90, weapon: staff, name: "")
         caste = .wizzard
-        name = randomNames()
+        name = Support.randomNames()
     }
 }
 
@@ -78,7 +78,7 @@ class Giant: Caracters
     {
         super.init(lifePoints: 210, weapon: giant_bare_hands, name: "")
         caste = .giant
-        name = randomNames()
+        name = Support.randomNames()
     }
 }
 
@@ -100,7 +100,7 @@ class Dwarf: Caracters
     {
         super.init(lifePoints: 70, weapon: axe, name: "")
         caste = .dwarf
-        name = randomNames()
+        name = Support.randomNames()
     }
 }
 
@@ -122,7 +122,7 @@ class Archer: Caracters
     {
         super.init(lifePoints: 90, weapon: bow, name: "")
         caste = .archer
-        name = randomNames()
+        name = Support.randomNames()
     }
 }
 

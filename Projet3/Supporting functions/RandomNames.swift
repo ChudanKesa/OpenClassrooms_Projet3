@@ -8,44 +8,47 @@
 
 import Foundation
 
-func randomNames() -> String
+extension Support
 {
-    var name = ""
-    var names = ["Gerald",
-                 "Geronimo",
-                 "Aindrea",
-                 "Gedeon",
-                 "Baghadur",
-                 "Blair",
-                 "Cadell",
-                 "Caderyn",
-                 "Caedmon",
-                 "Càel",
-                 "Cay",
-                 "Cedric",
-                 "Conlanoch",
-                 "Deandre",
-                 "Donogh",
-                 "Duncan",
-                 "Éibehar",
-                 "Gabriel",
-                 "Hania",
-                 "Ingvar",
-                 "Kaden",
-                 "Rayner",
-                 "Straton",
-                 "Takeshi",
-                 "Verner",
-                 "Volker",
-                 "Volundr",
-                 "Walter",
-                 "Wyatt",
-                 "Xerces"]
-    
-    name = names[Int(arc4random_uniform(UInt32(names.count)))]
-    
-    
-    return name
+    static func randomNames() -> String
+    {
+        var name = ""
+        var names = ["Gerald",
+                     "Geronimo",
+                     "Aindrea",
+                     "Gedeon",
+                     "Baghadur",
+                     "Blair",
+                     "Cadell",
+                     "Caderyn",
+                     "Caedmon",
+                     "Càel",
+                     "Cay",
+                     "Cedric",
+                     "Conlanoch",
+                     "Deandre",
+                     "Donogh",
+                     "Duncan",
+                     "Éibehar",
+                     "Gabriel",
+                     "Hania",
+                     "Ingvar",
+                     "Kaden",
+                     "Rayner",
+                     "Straton",
+                     "Takeshi",
+                     "Verner",
+                     "Volker",
+                     "Volundr",
+                     "Walter",
+                     "Wyatt",
+                     "Xerces"]
+        
+        name = names[Int(arc4random_uniform(UInt32(names.count)))]
+        
+        
+        return name
+    }
 }
 
 

@@ -8,16 +8,15 @@
 
 import Foundation
 
-func errorLog(origin: String, detail: String)
+class Support
 {
-    print("**************************************")
-    print("\tError in file \(origin) : '\(detail)'.")
-    print("**************************************")
+    static func errorLog(origin: String, detail: String)
+    {
+        print("**************************************")
+        print("\tError in file \(origin) : '\(detail)'.")
+        print("**************************************")
+    }
 }
 
 
-func localisation(origin: String, detail: String)
-{
-    print("We're here : \(origin) : \(detail)")
-}
 

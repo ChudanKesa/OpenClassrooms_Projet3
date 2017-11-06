@@ -9,7 +9,9 @@
 import Foundation
 
 
-func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
+extension Support
+{
+    static func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
     {
         var error = true
         
@@ -32,7 +34,7 @@ func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
                         error = false
                     }
                 }
-                
+                    
                 else
                 {
                     print("Problem with entry. Please try again.")
@@ -50,7 +52,7 @@ func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
     
     /////////////////////////////////////////////////////////////////////////////////////
     
-    func askForString() -> String
+    static func askForString() -> String
     {
         var error = true
         
@@ -72,14 +74,14 @@ func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
         
         return retour
     }
-
+    
     ///////////////////////////////////////////////////////////////////////////////////// automatic control for Y/N situations
-
-    func askYN() -> String
+    
+    static func askYN() -> String
     {
         var error = true
         var retour = ""
-    
+        
         while error
         {
             if let read = readLine()
@@ -99,7 +101,7 @@ func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
                     cheat()
                     print("We were trying to confirm something. Let's do that again.")
                 }
-                
+                    
                 else if retour == "n" || retour == "N" || retour == "y" || retour == "Y"
                 {
                     error = false
@@ -114,13 +116,13 @@ func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
                 print("Problem with entry. Please try again.")
             }
         }
-    
+        
         return retour
     }
-
+    
     ///////////////////////////////////////////////////////////////////////////////////// the one to use when asking for Int
-
-    func secureInt(lowerLimit: Int, upperLimit: Int) -> Int
+    
+    static func secureInt(lowerLimit: Int, upperLimit: Int) -> Int
     {
         var secondEntry = true
         var select = Int()
@@ -146,20 +148,20 @@ func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
         
         return select
     }
-
-/////////////////////////////////////////////////////////////////////////////////////
-
-func cheat() // now that the game works and i just have to change a few minor things, testing is WAY TOO LONG
-{
-    print("*************************")
-    print("\tWELCOME to the cheat area.\n")
-
     
-    var tab = [Caracters]()
-    var select = Int()
-    var alsoselect = Int()
-    var number = 1
-
+    /////////////////////////////////////////////////////////////////////////////////////
+    
+    static func cheat() // now that the game works and i just have to change a few minor things, testing is WAY TOO LONG
+    {
+        print("*************************")
+        print("\tWELCOME to the cheat area.\n")
+        
+        
+        var tab = [Caracters]()
+        var select = Int()
+        var alsoselect = Int()
+        var number = 1
+        
         print("Wich caracter's life shall we modify ?")
         for i in 0..<game.players.count
         {
@@ -178,6 +180,7 @@ func cheat() // now that the game works and i just have to change a few minor th
         tab[select - 1].lifePoints = alsoselect
         
         print("\n\tDone.\n")
+    }
 }
 
 

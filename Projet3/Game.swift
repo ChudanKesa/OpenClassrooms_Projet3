@@ -148,7 +148,6 @@ class Game
         {
             players[i].chooseParty()
         }
-        localisation(origin: "\(#file)", detail: "\(#line)")
         
     } // stargame()
     
@@ -213,7 +212,7 @@ class Game
                     print("1. Attack")
                     print("2. Use power")
                     
-                    select = secureInt(lowerLimit: 1, upperLimit: 2)
+                    select = Support.secureInt(lowerLimit: 1, upperLimit: 2)
                     
                     switch select
                     {
@@ -228,7 +227,7 @@ class Game
                                 print("\(j+1).", terminator: " "); players[i].party[j].symbol(caste: players[i].party[j]); print(" \(players[i].party[j].name)")
                             }
                             
-                            select = secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
+                            select = Support.secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
                         }
                             
                         else
@@ -252,7 +251,7 @@ class Game
                             case 1:
                                 target = players[0].party[0]
                             default:
-                                errorLog(origin: "\(#file)", detail: "\(#line)")
+                                Support.errorLog(origin: "\(#file)", detail: "\(#line)")
                                 exit(1)
                             }
                         }
@@ -283,7 +282,7 @@ class Game
                                 }
                             }
                             
-                            alsoselect = secureInt(lowerLimit: 1, upperLimit: targetsRepository.count)
+                            alsoselect = Support.secureInt(lowerLimit: 1, upperLimit: targetsRepository.count)
                             target = targetsRepository[alsoselect-1]
                         }
                         
@@ -294,7 +293,7 @@ class Game
                         case 1:
                             break
                         default:
-                            errorLog(origin: "\(#file)", detail: "\(#line)")
+                            Support.errorLog(origin: "\(#file)", detail: "\(#line)")
                         }
                         
                         players[i].party[select-1].attack(weapon: players[i].party[select-1].weapon, target: target)
@@ -330,7 +329,7 @@ class Game
                                         usleep(1 * 100 * 1000)
                                         print("\(y+1). \(players[i].party[y].name)", terminator: " "); players[i].party[y].symbol(caste: players[i].party[y]); print(players[i].party[y].percent(life: players[i].party[y]))
                                     }
-                                    select = secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
+                                    select = Support.secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
                                     target = players[i].party[select-1]
                                     print("\(players[i].party[powerPosition[0]].name) uses \((players[i].party[powerPosition[0]] as! Wizzard).power.useHeal(target: target)) on \(target.name) !")
                                     usleep(1 * 100 * 1000)
@@ -349,7 +348,7 @@ class Game
                                 usleep(1 * 100 * 1000)
                                 print("\(y+1).", terminator:" "); players[i].party[powerPosition[y]].symbol(caste: players[i].party[powerPosition[y]]); print(" \(players[i].party[powerPosition[y]].name)")
                             }
-                            select = secureInt(lowerLimit: 1, upperLimit: powerPosition.count)
+                            select = Support.secureInt(lowerLimit: 1, upperLimit: powerPosition.count)
                             select = powerPosition[select-1]
                             
                             switch players[i].party[select]
@@ -376,7 +375,7 @@ class Game
                                         usleep(1 * 100 * 1000)
                                         print("\(y+1). \(players[i].party[y].name)", terminator: " "); players[i].party[y].symbol(caste: players[i].party[y]); print(players[i].party[y].percent(life: players[i].party[y]))
                                     }
-                                    alsoselect = secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
+                                    alsoselect = Support.secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
                                     target = players[i].party[alsoselect-1]
                                     print("\(players[i].party[select].name) uses \((players[i].party[select] as! Wizzard).power.useHeal(target: target)) on \(target.name) !")
                                     usleep(1 * 100 * 1000)
@@ -385,12 +384,12 @@ class Game
                                     usleep(1 * 1000 * 1000)
                                 }
                             default:
-                                errorLog(origin: "Game", detail: "l.\(#line) : power choice")
+                                Support.errorLog(origin: "Game", detail: "l.\(#line) : power choice")
                             }
                             
                         }
                     default:
-                        errorLog(origin: "Game", detail: "l.178 : 'select' error")
+                        Support.errorLog(origin: "Game", detail: "l.178 : 'select' error")
                     }
                     
                 } // if powerPresent
@@ -414,7 +413,7 @@ class Game
                             print("\(j+1).", terminator: " "); players[i].party[j].symbol(caste: players[i].party[j]); print(" \(players[i].party[j].name)")
                         }
                         
-                        select = secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
+                        select = Support.secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
                     }
                         
                     else
@@ -438,7 +437,7 @@ class Game
                         case 1:
                             target = players[0].party[0]
                         default:
-                            errorLog(origin: "\(#file)", detail: "\(#line)")
+                            Support.errorLog(origin: "\(#file)", detail: "\(#line)")
                             exit(1)
                         }
                     }
@@ -468,7 +467,7 @@ class Game
                             }
                         }
                         
-                        alsoselect = secureInt(lowerLimit: 1, upperLimit: targetsRepository.count)
+                        alsoselect = Support.secureInt(lowerLimit: 1, upperLimit: targetsRepository.count)
                         target = targetsRepository[alsoselect-1]
                     }
                     
@@ -479,7 +478,7 @@ class Game
                     case 1:
                         break
                     default:
-                        errorLog(origin: "\(#file)", detail: "\(#line)")
+                        Support.errorLog(origin: "\(#file)", detail: "\(#line)")
                     }
                     players[i].party[select-1].attack(weapon: players[i].party[select-1].weapon, target: target)
                     
@@ -582,12 +581,11 @@ class Game
                     if players[i].party.count == 0
                     {
                         print("\n\t")
-                        slowWriting(sentence: "\(players[i].name)'s party was defeated...")
+                        Support.slowWriting(sentence: "\(players[i].name)'s party was defeated...")
                         sleep(1)
                         print("\t", terminator: "")
-                        slowWriting(sentence: "\(players[i].name) lost.")
+                        Support.slowWriting(sentence: "\(players[i].name) lost.")
                         players.remove(at: i)
-                        localisation(origin: "\(#file)", detail: "\(#line)")
                     }
                 }
                 
@@ -599,13 +597,13 @@ class Game
                     sleep(1)
                     print(" **\\o/**\\o/**\\o/**\\o/**")
                     print("\t", terminator: "")
-                    slowWriting(sentence: "Congratulations, \(players[0].name) ! You vanquished your opponents. This game is yours !")
+                    Support.slowWriting(sentence: "Congratulations, \(players[0].name) ! You vanquished your opponents. This game is yours !")
                     print("\n")
                     sleep(1)
                     print("\n")
                     sleep(1)
                     print("Do you want to play again ?\nY/N")
-                    switch askYN()
+                    switch Support.askYN()
                     {
                     case "y":
                         game.keepPlaying = true
@@ -615,7 +613,6 @@ class Game
                         sleep(1)
                         print("")
                         players.remove(at: 0)
-                        localisation(origin: "\(#file)", detail: "\(#line)")
                     case "Y":
                         game.keepPlaying = true
                         print("Prepare !")
@@ -624,7 +621,6 @@ class Game
                         sleep(1)
                         print("")
                         players.remove(at: 0)
-                        localisation(origin: "\(#file)", detail: "\(#line)")
                     case "n":
                         game.keepPlaying = false
                         print("\t************\n\t", terminator: "")
@@ -644,16 +640,14 @@ class Game
                         sleep(1)
                         print("")
                     default:
-                        errorLog(origin: "\(#file)", detail: "\(#line)")
+                        Support.errorLog(origin: "\(#file)", detail: "\(#line)")
                     }
                     
                     
                     
                     victory = true
                 }
-                localisation(origin: "\(#file)", detail: "\(#line)")
             } // while !victory
-            localisation(origin: "\(#file)", detail: "\(#line)")
       //  }
         
         return keepPlaying

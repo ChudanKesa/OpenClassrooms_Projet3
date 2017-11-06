@@ -47,7 +47,7 @@ class Players
             
             print("Do you want a random party ? Y/N")
             
-            switch askYN()
+            switch Support.askYN()
             {
             case "y":
                 auto = true
@@ -58,7 +58,7 @@ class Players
             case "N":
                 auto = false
             default:
-                errorLog(origin: "\(#file)", detail: "\(#line)")
+                Support.errorLog(origin: "\(#file)", detail: "\(#line)")
             }
             
             switch auto
@@ -77,7 +77,7 @@ class Players
                         case 4:
                             party.append(Dwarf(auto: true))
                         default:
-                            errorLog(origin: "Players", detail: "\(#line) switch")
+                            Support.errorLog(origin: "Players", detail: "\(#line) switch")
                     }
                 }
             case false:
@@ -97,7 +97,7 @@ class Players
                     print("4. A Dwarf. 🍺")
                     print(Caracters.caracterDescription(caste: .dwarf))
                     
-                    switch secureInt(lowerLimit: 1, upperLimit: 4)
+                    switch Support.secureInt(lowerLimit: 1, upperLimit: 4)
                     {
                     case 1:
                         party.append(Warrior())
@@ -108,7 +108,7 @@ class Players
                     case 4:
                         party.append(Dwarf())
                     default:
-                        errorLog(origin: "Players", detail: "\(#line) switch")
+                        Support.errorLog(origin: "Players", detail: "\(#line) switch")
                     }
                 } // for i 1...3
             }
@@ -131,13 +131,13 @@ class Players
                     print("and \(party[i-1].name), \(party[i-1].adressCaracter(caracter: party[i-1])).")
                     usleep(9 * 100 * 1000)
                 default:
-                    errorLog(origin: "Players", detail: "Switch 'i' would not read")
+                    Support.errorLog(origin: "Players", detail: "Switch 'i' would not read")
                 }
             }
             print("Is that correct ?")
             print("Y/N")
             
-            switch askYN()
+            switch Support.askYN()
             {
             case "Y":
                 usleep(1 * 100 * 1000)
@@ -163,10 +163,9 @@ class Players
                     party.remove(at: 0)
                 }
             default:
-                errorLog(origin: "Players", detail: "\(#line) switch")
+                Support.errorLog(origin: "Players", detail: "\(#line) switch")
             }
 
-            localisation(origin: "\(#file)", detail: "\(#line)")
             if partyOK
             {
                 for i in 0..<party.count
@@ -174,7 +173,6 @@ class Players
                     if party[i].caste == .wizzard
                     {
                         (party[i] as! Wizzard).team = party
-                        localisation(origin: "\(#file)", detail: "\(#line)")
                     }
                 }
             }

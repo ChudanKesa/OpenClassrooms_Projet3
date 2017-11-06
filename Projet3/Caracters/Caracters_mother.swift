@@ -91,7 +91,7 @@ class Caracters
                 name = read!
                 if name == ""
                 {
-                    name = randomNames()
+                    name = Support.randomNames()
                 }
                 error = false
             }
@@ -129,7 +129,7 @@ class Caracters
         case .archer:
             description = "A long-ranged, supportive fighter."
         default:
-            errorLog(origin: "Caracters_mother", detail: "caste would not be read")
+            Support.errorLog(origin: "Caracters_mother", detail: "caste would not be read")
         }
         
         return description
@@ -157,7 +157,7 @@ class Caracters
             case .dwarf:
                 return "an \(caracter.caste.rawValue) 🍺"
             default:
-                errorLog(origin: "Caracters_mother", detail: "caste switch error")
+                Support.errorLog(origin: "Caracters_mother", detail: "caste switch error")
                 return "ERROR LOGGED"
             }
         }
@@ -175,7 +175,7 @@ class Caracters
             case .dwarf:
                 return "a \(caracter.caste.rawValue) 🍺"
             default:
-                errorLog(origin: "Caracters_mother", detail: "caste switch error")
+                Support.errorLog(origin: "Caracters_mother", detail: "caste switch error")
                 return "ERROR LOGGED"
             }
         }

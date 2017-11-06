@@ -104,7 +104,7 @@ class Healing: Powers
             multHealing(target: (target as! Wizzard).team)
             healName = "multi healing"
         default:
-            errorLog(origin: "Powers", detail: "weapon.name non recognized")
+            Support.errorLog(origin: "Powers", detail: "weapon.name non recognized")
         }
         
         return healName
