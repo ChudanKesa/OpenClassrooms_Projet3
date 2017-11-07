@@ -29,6 +29,14 @@ class Warrior: Caracters
         caste = .warrior
         name = Support.randomNames()
     }
+    
+    init(robot: String)
+    {
+        super.init(lifePoints: 100, weapon: sword, name: "")
+        caste = .warrior
+        name = robot
+    }
+
 }
 
 
@@ -56,6 +64,13 @@ class Wizzard: Caracters
         caste = .wizzard
         name = Support.randomNames()
     }
+    
+    init(robot: String)
+    {
+        super.init(lifePoints: 90, weapon: staff, name: "")
+        caste = .wizzard
+        name = robot
+    }
 }
 
 
@@ -80,6 +95,13 @@ class Giant: Caracters
         caste = .giant
         name = Support.randomNames()
     }
+    
+    init(robot: String)
+    {
+        super.init(lifePoints: 210, weapon: giant_bare_hands, name: "")
+        caste = .giant
+        name = robot
+    }
 }
 
 class Dwarf: Caracters
@@ -102,6 +124,13 @@ class Dwarf: Caracters
         caste = .dwarf
         name = Support.randomNames()
     }
+    
+    init(robot: String)
+    {
+        super.init(lifePoints: 70, weapon: axe, name: "")
+        caste = .dwarf
+        name = robot
+    }
 }
 
 class Archer: Caracters
@@ -123,6 +152,13 @@ class Archer: Caracters
         super.init(lifePoints: 90, weapon: bow, name: "")
         caste = .archer
         name = Support.randomNames()
+    }
+    
+    init(robot: String)
+    {
+        super.init(lifePoints: 90, weapon: bow, name: "")
+        caste = .archer
+        name = robot
     }
 }
 

@@ -102,16 +102,8 @@ class Game
         }
         else if numberOfPlayers == 1
         {
-            print("What is your name ?")
-            if let name = readLine()
-            {
-                print("\n")
-                players.append(Players(name: name))
-            }
-            print("There are no opponents to fight. \(players[0].name) wins by default !")
-            print("Yay, i guess ! 🎈")
-            
-            exit(0)
+            let robot = Robot()
+            robot.battle()
         }
         else
         {
@@ -568,8 +560,8 @@ class Game
         var players = tab
         var victory = false
         
-   //     while game.keepPlaying
-   //     {
+        if game.players.count > 0
+        {
             victory = false
             
             while !victory
@@ -648,9 +640,54 @@ class Game
                     victory = true
                 }
             } // while !victory
-      //  }
+            
+        }
         
-        return keepPlaying
+        else
+        {
+            print("Do you want to play again ?\nY/N")
+            switch Support.askYN()
+            {
+            case "y":
+                game.keepPlaying = true
+                print("Prepare !")
+                sleep(1)
+                print("")
+                sleep(1)
+                print("")
+                players.remove(at: 0)
+            case "Y":
+                game.keepPlaying = true
+                print("Prepare !")
+                sleep(1)
+                print("")
+                sleep(1)
+                print("")
+                players.remove(at: 0)
+            case "n":
+                game.keepPlaying = false
+                print("\t************\n\t", terminator: "")
+                print("Thanks for playing !")
+                print("\n")
+                sleep(1)
+                print("")
+                sleep(1)
+                print("")
+            case "N":
+                game.keepPlaying = false
+                print("\t************\n\t", terminator: "")
+                print("Thanks for playing !")
+                print("\n")
+                sleep(1)
+                print("")
+                sleep(1)
+                print("")
+            default:
+                Support.errorLog(origin: "\(#file)", detail: "\(#line)")
+            }
+        }
+        
+        return game.keepPlaying
     }
     
     func allGame()
