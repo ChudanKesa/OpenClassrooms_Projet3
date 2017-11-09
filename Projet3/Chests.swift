@@ -41,9 +41,13 @@ class Chest
         }
         
         print("A magical treasure chest appeared before you !")
-        print("You open it and take its contents")
-        print("You've obtained a new weapon : \(weapon.adressWeapon(weapon: weapon)).")
-        print("It causes \(weapon.damage) damage per hit.\n")
+        usleep(15 * 100 * 1000)
+        print("""
+            You open it and take its contents.\n
+            You've obtained a new weapon : \(weapon.adressWeapon(weapon: weapon)).\n
+            It causes \(weapon.damage) damage per hit.\n
+            """)
+        sleep(1)
         
         return weapon
         

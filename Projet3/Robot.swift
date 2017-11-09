@@ -76,7 +76,10 @@ class Robot
         while game.players[0].party.count > 0 && robotFighters.count > 0
         {
             playerTurn()
-            robotTurn()
+            if robotFighters.count > 0
+            {
+                robotTurn()
+            }
         }
         
         if game.players[0].party.count - robotFighters.count > 1
@@ -114,6 +117,7 @@ class Robot
         var totalAlliesLeft = Int()
         
         var deceased = [(Int, Int)]()
+        var removal = [Int]()
         
         var select = 0 // value will be used for whatever needs and Int as an answer
         var alsoselect = 0 // turns out i need two
@@ -144,11 +148,13 @@ class Robot
             usleep(1 * 100 * 1000)
             if powerPresent == true
             {
-                print("What will you do ?")
-                print("1. Attack")
-                print("2. Use power")
+                print("""
+                What will you do ?
+                1. Attack
+                2. Use power
+                """)
                 
-                select = Support.secureInt(lowerLimit: 1, upperLimit: 2)
+                select = Support.cheat1P(robotFighters: robotFighters)
                 
                 switch select
                 {
@@ -296,15 +302,15 @@ class Robot
                                 usleep(1 * 1000 * 1000)
                             }
                         default:
-                            Support.errorLog(origin: "Game", detail: "l.\(#line) : power choice")
+                            Support.errorLog(origin: "\(#file)", detail: "l.\(#line) : power choice")
                         }
                         
                     }
                 default:
-                    Support.errorLog(origin: "Game", detail: "l.178 : 'select' error")
+                    Support.errorLog(origin: "\(#file)", detail: "l\(#line) : 'select' error")
                 }
                 
-            } // if powerPresent
+            } // MARK: if powerPresent
             else
             {
                 if game.players[0].party.count > 1
@@ -321,7 +327,7 @@ class Robot
                         print("\(j+1).", terminator: " "); game.players[0].party[j].symbol(caste: game.players[0].party[j]); print(" \(game.players[0].party[j].name)")
                     }
                     
-                    select = Support.secureInt(lowerLimit: 1, upperLimit: game.players[0].party.count)
+                    select = Support.cheat1P(robotFighters: robotFighters, lowerLimit: 1, upperLimit: game.players[0].party.count)
                 }
                     
                 else
@@ -436,6 +442,52 @@ class Robot
                 }
             }
         }
+        
+        for i in 0..<robotFighters.count
+        {
+            if robotFighters.count == 1
+            {
+                if robotFighters[0].lifePoints == 0
+                {
+                    print("\(robotFighters[0].name) is breaking !")
+                    usleep(12 * 100 * 1000)
+                    print("But it won't go down without one last strike !")
+                }
+            }
+            else
+            {
+                if robotFighters[i].lifePoints == 0
+                {
+                    switch Int(arc4random_uniform(UInt32(5)))
+                    {
+                    case 0:
+                        print("ERROR ERROR ->\(robotFighters[i].name)<- ERROR ERROR ERROR")
+                    case 1:
+                        print("\(robotFighters[i].name) WILL NOW STOP TO FUNCTION DUE TO UNFORSEEN CIRCUMSTANCES")
+                    case 2:
+                        print("\(robotFighters[i].name) does not respond anymore.")
+                    case 3:
+                        print("\(robotFighters[i].name) has stopped moving. Rust starts to appear on it.")
+                    default:
+                        print("Fatal error : \(robotFighters[i].name) no longer in condition for continuous use.")
+                    }
+                    removal.append(i)
+                    print("\n")
+                    sleep(2)
+                }
+            }
+        }
+        
+        for i in (0..<removal.count).reversed()
+        {
+            robotFighters.remove(at: removal[i])
+        }
+        
+        for _ in 0..<removal.count
+        {
+            removal.remove(at: 0)
+        }
+        
     } // func player turn
     
     func robotTurn()
@@ -508,9 +560,9 @@ class Robot
             }
         }
         
-        usleep(5 * 100 * 1000)
+        usleep(20 * 100 * 1000)
         print("The robots are moving.\n")
-        usleep(13 * 100 * 1000)
+        usleep(15 * 100 * 1000)
         
         target = nil
         healTarget = nil
@@ -571,7 +623,7 @@ class Robot
         switch turnAction
         {
         case .heal:
-            print("\(robotFighters[powerPosition[0]]) uses \((robotFighters[powerPosition[0]] as! Wizzard).power.useHeal(target: healTarget!)) on \(healTarget!.name) !")
+            print("\(robotFighters[powerPosition[0]].name) uses \((robotFighters[powerPosition[0]] as! Wizzard).power.useHeal(target: healTarget!)) on \(healTarget!.name) !")
             print("\(healTarget!.name) has \(healTarget!.lifePoints) life points.")
             healTarget!.lifeBar(caracter: healTarget!)
             sleep(1)
@@ -595,7 +647,13 @@ class Robot
             
             if robotFighters.count == 1 && robotFighters[0].lifePoints == 0
             {
-                print("\(robotFighters[0]) tries its best !")
+                print("\(robotFighters[0].name) tries its best !")
+            }
+            
+            else
+            {
+                print("\(robotFighters[attacker].name) attacks \(target!.name) !\n")
+                usleep(5 * 100 * 1000)
             }
             
             switch Int(arc4random_uniform(UInt32((2))))
@@ -609,47 +667,13 @@ class Robot
             }
             
             robotFighters[attacker].attack(weapon: robotFighters[attacker].weapon, target: target!)
+            sleep(2)
             
             if robotFighters.count == 1 && robotFighters[0].lifePoints == 0
             {
                 robotFighters.remove(at: 0)
             }
         }
-        
-        for i in 0..<robotFighters.count
-        {
-            if robotFighters.count == 1
-            {
-                if robotFighters[0].lifePoints == 0
-                {
-                    print("\(robotFighters[0].name) is breaking !")
-                    usleep(12 * 100 * 1000)
-                    print("But it won't go down without one last strike !")
-                }
-            }
-            else
-            {
-                if robotFighters[i].lifePoints == 0
-                {
-                    switch Int(arc4random_uniform(UInt32(5)))
-                    {
-                    case 0:
-                        print("ERROR ERROR \(robotFighters[i]) ERROR ERROR ERROR")
-                    case 1:
-                        print("\(robotFighters[i]) WILL NOW STOP TO FUNCTION DUE TO UNFORSEEN CIRCUMSTANCES")
-                    case 2:
-                        print("\(robotFighters[i]) does not respond anymore.")
-                    case 3:
-                        print("\(robotFighters[i]) has stopped moving. Rust starts to appear on it.")
-                    default:
-                        print("Fatal error : \(robotFighters[i]) no longer in condition for continuous use.")
-                    }
-                }
-                
-                robotFighters.remove(at: i)
-            }
-        }
-        
     }
     
     // NB : finir en effaçant game.players[0] et robotFighters

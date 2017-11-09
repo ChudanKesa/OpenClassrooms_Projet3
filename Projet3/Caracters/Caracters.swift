@@ -61,6 +61,7 @@ class Wizzard: Caracters
     init(auto: Bool)
     {
         super.init(lifePoints: 90, weapon: staff, name: "")
+        power.weapon = self.weapon
         caste = .wizzard
         name = Support.randomNames()
     }
@@ -68,6 +69,7 @@ class Wizzard: Caracters
     init(robot: String)
     {
         super.init(lifePoints: 90, weapon: staff, name: "")
+        power.weapon = self.weapon
         caste = .wizzard
         name = robot
     }

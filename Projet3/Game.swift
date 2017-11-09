@@ -381,7 +381,7 @@ class Game
                             
                         }
                     default:
-                        Support.errorLog(origin: "Game", detail: "l.178 : 'select' error")
+                        Support.errorLog(origin: "Game", detail: "\(#line) : 'select' error")
                     }
                     
                 } // if powerPresent
@@ -655,7 +655,6 @@ class Game
                 print("")
                 sleep(1)
                 print("")
-                players.remove(at: 0)
             case "Y":
                 game.keepPlaying = true
                 print("Prepare !")
@@ -663,7 +662,6 @@ class Game
                 print("")
                 sleep(1)
                 print("")
-                players.remove(at: 0)
             case "n":
                 game.keepPlaying = false
                 print("\t************\n\t", terminator: "")
