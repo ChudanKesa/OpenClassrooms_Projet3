@@ -10,6 +10,8 @@ import Foundation
 
 extension Support
 {
+    // sleep() between two prints works fine if you don't want to smother the user in text, but this displays the text one letter at a time, with a random delay between each and a a fixed delay between other signs, so it will look like the text is beeing typed.
+    
     static func slowWriting(sentence: String)
     {
         var index = sentence.index(sentence.startIndex, offsetBy: 4)

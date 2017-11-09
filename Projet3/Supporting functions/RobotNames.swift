@@ -10,6 +10,8 @@ import Foundation
 
 extension Support
 {
+    // exact same thing as randomNames, but with robot names.
+    
     static func robotNames() -> String
     {
         var name = ""

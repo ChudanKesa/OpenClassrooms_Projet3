@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Powers
+class Powers // powers to be used. Depends on weapon, since weapon alredy depends on class.
 {
     var weapon = Weapons()
 }
@@ -16,7 +16,7 @@ class Powers
 //////////////////////////
 // MARK: HEALING
 
-class Healing: Powers
+class Healing: Powers // contains different ways to heal, based on weapon. Last one choose which one is actually used.
 {
     func healing(target: Caracters)
     {
@@ -86,6 +86,8 @@ class Healing: Powers
     }
     
 // ----------------------------------------------
+    // switch weapon to choose which power to actually use.
+    
     func useHeal(target: Caracters) -> String
     {
         var healName = ""

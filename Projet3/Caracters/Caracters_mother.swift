@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Caracters
+class Caracters // basis for the caracters used in the game.
+                // They all need a name, a type (-> Class), life points, and a weapon.
 {
     enum Class: String
     {
@@ -47,6 +48,8 @@ class Caracters
     // MARK: METHODS
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    // function for attacking
+    
     func attack(weapon: Weapons, target: Caracters)
     {
         target.lifePoints -= weapon.damage
@@ -61,7 +64,7 @@ class Caracters
     }
     
 // ----------------------------
-    // ↓ pourrait être fait avec une seule fonction, mais je trouve ça plus clair
+    // to be used in the game to change the weapon of caracters. Could be done with openChest directly, but this feels more clear.
     
     func newWeapon(caracter: Caracters)
     {
@@ -73,6 +76,8 @@ class Caracters
     }
     
 // -----------------------------
+    
+    // asks for a string. To be used for naming caracters. Also permit "" entry for random name.
     
     func askForName() -> String
     {
@@ -108,12 +113,10 @@ class Caracters
     
 // --------------------------------
     
+    // a simple description based on caracter class. Useless, but lights the main code a little.
+    
     static func caracterDescription(caste: Class) -> String
     {
-        
-    // The fonction is useless for now, but i'd like to use it by accessing the properties of the class themselves
-    // As in : description = "He has \(Warrior.lifePoints) life points"
-        
         var description = ""
         
         switch caste
@@ -136,6 +139,8 @@ class Caracters
     }
     
 // --------------------------------
+    
+    // set up here wich classes must be adressed with "a" or "an". Also add the class symbol after call.
 
     func adressCaracter(caracter: Caracters) -> String
     {

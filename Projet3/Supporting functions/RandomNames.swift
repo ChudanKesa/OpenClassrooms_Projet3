@@ -10,6 +10,8 @@ import Foundation
 
 extension Support
 {
+    // returns a random name so askForName can get it.
+    
     static func randomNames() -> String
     {
         var name = ""

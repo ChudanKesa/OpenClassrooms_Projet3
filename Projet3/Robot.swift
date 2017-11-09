@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Robot
+class Robot // IA fighting. Nothing more than a player that gets everything choosen automatically.
 {
     var name: String // <- this to compare with players[0].name and make sure they're the same
     var robotFighters = [Caracters]()
@@ -70,7 +70,8 @@ class Robot
         print("\n")
         
     }
-        
+        // ↓ alternating between player and IA turns until one looses
+    
     func battle()
     {
         while game.players[0].party.count > 0 && robotFighters.count > 0
@@ -103,6 +104,8 @@ class Robot
             Support.slowWriting(sentence: "In a mighty fight that will echo through the ages, both army crushed each other.")
         }
     }
+    
+    // ↓ player chooses whether to attack, use power, and who to attack. Function also checks whoever is dead.
     
     func playerTurn()
     {
@@ -490,6 +493,8 @@ class Robot
         
     } // func player turn
     
+    // ↓ makes the registered army of robot fight, attacking healers and whoever got the fewer life points first.
+    
     func robotTurn()
     {
         enum Action
@@ -675,7 +680,5 @@ class Robot
             }
         }
     }
-    
-    // NB : finir en effaçant game.players[0] et robotFighters
 } // class Robot
 

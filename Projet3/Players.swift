@@ -25,6 +25,8 @@ class Players
     // MARK: METHODS
     //////////////////////////////////////////////////////////
     
+    // chooseParty makes players choose and confirm a party of 3 caracters.
+    
     func chooseParty()
     {
         var partyOK = false
@@ -181,7 +183,7 @@ class Players
     } // func chooseParty
     
     
-    func onePlayerChooseParty() // essentially the same but some words had to be changed.
+    func onePlayerChooseParty() // essentially the same but some adaptations had to be made.
     {
         var partyOK = false
         

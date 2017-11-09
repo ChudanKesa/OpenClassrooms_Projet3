@@ -11,6 +11,8 @@ import Foundation
 
 class Chest
 {
+    // pick a new weapon and return it to be equiped.
+    
     static func openChest(caste: Caracters.Class) -> Weapons
     {
         var weapon = Weapons()

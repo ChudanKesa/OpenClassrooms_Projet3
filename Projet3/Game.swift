@@ -8,13 +8,15 @@
 
 import Foundation
 
-class Game
+class Game // the game itself, contains tab of players and a Bool for whether to keep playing
 {
     
     var players = [Players]()
     var keepPlaying = true
     
-    func startGame() // asks for # of players, takes their names and put them in 'players'
+    // ↓ asks for # of players, takes their names and put them in 'players'
+    
+    func startGame()
     {
         var tryInputAgain = true
         var trySecondInputAgain = true // -> so the Y/N confirmation can be looped without asking for numberOfPlayers again
@@ -142,6 +144,8 @@ class Game
         }
         
     } // stargame()
+    
+    // ↓ one fighting turn for each player registered in *players*
     
     func playGame(players: [Players])
     {
@@ -555,6 +559,8 @@ class Game
     // MARK: ATTACK PATTERN OK
     // -> Every player in players has an action once
     
+    // ↓ makes players keep playing until one of them looses all of their party, then asks if they want to play again.
+    
     func finishGame(tab: [Players]) -> Bool
     {
         var players = tab
@@ -687,6 +693,8 @@ class Game
         
         return game.keepPlaying
     }
+    
+    // ↓ loop all of the above
     
     func allGame()
     {

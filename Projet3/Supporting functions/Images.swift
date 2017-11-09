@@ -10,6 +10,8 @@ import Foundation
 
 extension Caracters
 {
+    // show a caracter's life bar, with 50 '|'
+    
     func lifeBar(caracter: Caracters)
     {
         var total = 0
@@ -64,6 +66,8 @@ extension Caracters
     
 //------------------------------------
     
+    // show a symbol based on caracter class so they're easier to identify in the game. Also, prettier menus.
+    
     func symbol(caste: Caracters)
     {
         switch caste.caste
@@ -82,6 +86,8 @@ extension Caracters
     }
     
 //------------------------------------
+    
+    // same idea as lifeBar, to be used when little space is available.
     
     func percent(life: Caracters) -> String
     {

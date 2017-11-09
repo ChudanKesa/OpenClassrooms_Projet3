@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Weapons
+class Weapons // class that defines how many damage a caracter does. Depends on class. + list of instances
 {
     let name: String
     let damage: Int
@@ -27,6 +27,8 @@ class Weapons
     //////////////////////////////////////////////////////////
     // MARK: METHODS
     //////////////////////////////////////////////////////////
+    
+    // permit correct use of "a/an" as per weapon name.
     
     func adressWeapon(weapon: Weapons) -> String
     {

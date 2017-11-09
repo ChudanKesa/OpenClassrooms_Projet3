@@ -8,9 +8,13 @@
 
 import Foundation
 
+// all of those simply loop readLine until a non-error answer gets read.
+// the two last ones are cheating function to accelerate the game.
 
 extension Support
 {
+    // tries to get an Int between to values
+    
     static func askForInt(lowerLimit: Int, upperLimit: Int) -> Int
     {
         var error = true
@@ -75,7 +79,8 @@ extension Support
         return retour
     }
     
-    ///////////////////////////////////////////////////////////////////////////////////// automatic control for Y/N situations
+    /////////////////////////////////////////////////////////////////////////////////////
+    // automatic control for Y/N situations
     
     static func askYN() -> String
     {
@@ -120,7 +125,8 @@ extension Support
         return retour
     }
     
-    ///////////////////////////////////////////////////////////////////////////////////// the one to use when asking for Int
+    /////////////////////////////////////////////////////////////////////////////////////
+    // the one to use when asking for Int : combination of askForInt that gets an Int and askYN to confirm entry.
     
     static func secureInt(lowerLimit: Int, upperLimit: Int) -> Int
     {
@@ -210,7 +216,7 @@ extension Support
                         print("Wich caracter's life shall we modify ?")
                         for i in 0..<robotFighters.count
                         {
-                            print("\(i+1). \(robotFighters[i].name)", terminator: ""); robotFighters[i].symbol(caste: robotFighters[i]); print("\n", terminator: "")
+                            print("\(i+1). \(robotFighters[i].name)", terminator: " "); robotFighters[i].symbol(caste: robotFighters[i]); print("\n", terminator: "")
                         }
                         
                         number = Support.secureInt(lowerLimit: 1, upperLimit: robotFighters.count)
@@ -251,6 +257,7 @@ extension Support
     
     
     /////////////////////////////////////////////////////////////////////////////////////
+    // another cheating function for 1P mode, because i couldn't seem to do it otherwise.
     
     static func cheat1P(robotFighters: [Caracters], lowerLimit: Int, upperLimit: Int) -> Int
     {
@@ -267,7 +274,7 @@ extension Support
                         print("Wich caracter's life shall we modify ?")
                         for i in 0..<robotFighters.count
                         {
-                            print("\(i+1). \(robotFighters[i].name)", terminator: ""); robotFighters[i].symbol(caste: robotFighters[i]); print("\n", terminator: "")
+                            print("\(i+1). \(robotFighters[i].name)", terminator: " "); robotFighters[i].symbol(caste: robotFighters[i]); print("\n", terminator: "")
                         }
                         
                         number = Support.secureInt(lowerLimit: 1, upperLimit: robotFighters.count)
