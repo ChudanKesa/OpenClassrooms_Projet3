@@ -9,11 +9,11 @@
 import Foundation
 
 
-class Warrior: Caracters
+class Warrior: Caracter
 {
     init()
     {
-        super.init(lifePoints: 100, weapon: sword, name: "")
+        super.init(lifePoints: 100, weapon: Weapon(name: "Sword", damage: 10), name: "")
         caste = .warrior
         print("Choose a name for your Warrior (press entry for random name) :")
         name = askForName()
@@ -25,14 +25,14 @@ class Warrior: Caracters
     
     init(auto: Bool)
     {
-        super.init(lifePoints: 100, weapon: sword, name: "")
+        super.init(lifePoints: 100, weapon: Weapon(name: "Sword", damage: 10), name: "")
         caste = .warrior
-        name = Support.randomNames()
+        name = autoName(read: "")
     }
     
     init(robot: String)
     {
-        super.init(lifePoints: 100, weapon: sword, name: "")
+        super.init(lifePoints: 100, weapon: Weapon(name: "Sword", damage: 10), name: "")
         caste = .warrior
         name = robot
     }
@@ -40,14 +40,14 @@ class Warrior: Caracters
 }
 
 
-class Wizzard: Caracters
+class Wizzard: Caracter
 {
     var power = Healing()
-    var team = [Caracters]() // <- to use as target for multiHeal
+    var team = [Caracter]() // <- to use as target for multiHeal
         
     init()
     {
-        super.init(lifePoints: 90, weapon: staff, name: "")
+        super.init(lifePoints: 90, weapon: Weapon(name: "Staff", damage: 5), name: "")
         power.weapon = self.weapon
         caste = .wizzard
         print("Choose a name for your Wizzard (press entry for random name) :")
@@ -60,15 +60,15 @@ class Wizzard: Caracters
     
     init(auto: Bool)
     {
-        super.init(lifePoints: 90, weapon: staff, name: "")
+        super.init(lifePoints: 90, weapon: Weapon(name: "Staff", damage: 5), name: "")
         power.weapon = self.weapon
         caste = .wizzard
-        name = Support.randomNames()
+        name = autoName(read: "")
     }
     
     init(robot: String)
     {
-        super.init(lifePoints: 90, weapon: staff, name: "")
+        super.init(lifePoints: 90, weapon: Weapon(name: "Staff", damage: 5), name: "")
         power.weapon = self.weapon
         caste = .wizzard
         name = robot
@@ -77,11 +77,11 @@ class Wizzard: Caracters
 
 
 
-class Giant: Caracters
+class Giant: Caracter
 {
     init()
     {
-        super.init(lifePoints: 210, weapon: giant_bare_hands, name: "")
+        super.init(lifePoints: 210, weapon: Weapon(name: "Giant bare hands", damage: 4), name: "")
         caste = .giant
         print("Choose a name for your Giant (press entry for random name) :")
         name = askForName()
@@ -93,24 +93,24 @@ class Giant: Caracters
     
     init(auto: Bool)
     {
-        super.init(lifePoints: 210, weapon: giant_bare_hands, name: "")
+        super.init(lifePoints: 210, weapon: Weapon(name: "Giant bare hands", damage: 4), name: "")
         caste = .giant
-        name = Support.randomNames()
+        name = autoName(read: "")
     }
     
     init(robot: String)
     {
-        super.init(lifePoints: 210, weapon: giant_bare_hands, name: "")
+        super.init(lifePoints: 210, weapon: Weapon(name: "Giant bare hands", damage: 4), name: "")
         caste = .giant
         name = robot
     }
 }
 
-class Dwarf: Caracters
+class Dwarf: Caracter
 {
     init()
     {
-        super.init(lifePoints: 70, weapon: axe, name: "")
+        super.init(lifePoints: 70, weapon: Weapon(name: "Axe", damage: 14), name: "")
         caste = .dwarf
         print("Choose a name for your Dwarf (press entry for random name) :")
         name = askForName()
@@ -122,24 +122,24 @@ class Dwarf: Caracters
     
     init(auto: Bool)
     {
-        super.init(lifePoints: 70, weapon: axe, name: "")
+        super.init(lifePoints: 70, weapon: Weapon(name: "Axe", damage: 14), name: "")
         caste = .dwarf
-        name = Support.randomNames()
+        name = autoName(read: "")
     }
     
     init(robot: String)
     {
-        super.init(lifePoints: 70, weapon: axe, name: "")
+        super.init(lifePoints: 70, weapon: Weapon(name: "Axe", damage: 14), name: "")
         caste = .dwarf
         name = robot
     }
 }
 
-class Archer: Caracters
+class Archer: Caracter
 {    
     init()
     {
-        super.init(lifePoints: 90, weapon: bow, name: "")
+        super.init(lifePoints: 90, weapon: Weapon(name: "Bow", damage: 9), name: "")
         caste = .archer
         print("Choose a name for your Archer (press entry for random name) :")
         name = askForName()
@@ -151,14 +151,14 @@ class Archer: Caracters
     
     init(auto: Bool)
     {
-        super.init(lifePoints: 90, weapon: bow, name: "")
+        super.init(lifePoints: 90, weapon: Weapon(name: "Bow", damage: 9), name: "")
         caste = .archer
-        name = Support.randomNames()
+        name = autoName(read: "")
     }
     
     init(robot: String)
     {
-        super.init(lifePoints: 90, weapon: bow, name: "")
+        super.init(lifePoints: 90, weapon: Weapon(name: "Bow", damage: 9), name: "")
         caste = .archer
         name = robot
     }

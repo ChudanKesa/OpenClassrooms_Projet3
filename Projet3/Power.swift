@@ -8,17 +8,17 @@
 
 import Foundation
 
-class Powers // powers to be used. Depends on weapon, since weapon alredy depends on class.
+class Power // powers to be used. Depends on weapon, since weapon alredy depends on class.
 {
-    var weapon = Weapons()
+    var weapon = Weapon()
 }
 
 //////////////////////////
 // MARK: HEALING
 
-class Healing: Powers // contains different ways to heal, based on weapon. Last one choose which one is actually used.
+class Healing: Power // contains different ways to heal, based on weapon. Last one choose which one is actually used.
 {
-    func healing(target: Caracters)
+    func healing(target: Caracter)
     {
         if target.maxLifePoints - target.lifePoints >= 10
         {
@@ -34,7 +34,7 @@ class Healing: Powers // contains different ways to heal, based on weapon. Last 
         }
     }
     
-    func superiorHealing(target: Caracters)
+    func superiorHealing(target: Caracter)
     {
         if target.maxLifePoints - target.lifePoints >= 18
         {
@@ -50,7 +50,7 @@ class Healing: Powers // contains different ways to heal, based on weapon. Last 
         }
     }
     
-    func weakenedHealing(target: Caracters)
+    func weakenedHealing(target: Caracter)
     {
         if target.maxLifePoints - target.lifePoints >= 8
         {
@@ -66,7 +66,7 @@ class Healing: Powers // contains different ways to heal, based on weapon. Last 
         }
     }
     
-    func multHealing(target: [Caracters])
+    func multHealing(target: [Caracter])
     {
         for i in 0..<target.count
         {
@@ -88,7 +88,7 @@ class Healing: Powers // contains different ways to heal, based on weapon. Last 
 // ----------------------------------------------
     // switch weapon to choose which power to actually use.
     
-    func useHeal(target: Caracters) -> String
+    func useHeal(target: Caracter) -> String
     {
         var healName = ""
         switch weapon.name

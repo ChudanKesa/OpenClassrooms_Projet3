@@ -11,16 +11,16 @@
 		504C75F11FACA846000E7E6F /* SlowWriting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C75F01FACA846000E7E6F /* SlowWriting.swift */; };
 		5051774A1FA073230007C8E9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177491FA073230007C8E9 /* main.swift */; };
 		505177511FA09ACD0007C8E9 /* Caracters_mother.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177501FA09ACD0007C8E9 /* Caracters_mother.swift */; };
-		505177541FA09B9C0007C8E9 /* Weapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177531FA09B9C0007C8E9 /* Weapons.swift */; };
-		505177561FA09C220007C8E9 /* Chests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177551FA09C220007C8E9 /* Chests.swift */; };
-		505177581FA0ACB80007C8E9 /* Caracters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177571FA0ACB80007C8E9 /* Caracters.swift */; };
+		505177541FA09B9C0007C8E9 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177531FA09B9C0007C8E9 /* Weapon.swift */; };
+		505177561FA09C220007C8E9 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177551FA09C220007C8E9 /* Chest.swift */; };
+		505177581FA0ACB80007C8E9 /* Caracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177571FA0ACB80007C8E9 /* Caracter.swift */; };
 		5051775A1FA0B6DA0007C8E9 /* ErrorsLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505177591FA0B6D80007C8E9 /* ErrorsLog.swift */; };
-		5059A3E31FA39E4600F40233 /* Powers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059A3E21FA39E4600F40233 /* Powers.swift */; };
+		5059A3E31FA39E4600F40233 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5059A3E21FA39E4600F40233 /* Power.swift */; };
 		505CDCA61FB087CD0003A17C /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505CDCA51FB087CD0003A17C /* Robot.swift */; };
 		505CDCA81FB0A4470003A17C /* RobotNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505CDCA71FB0A4470003A17C /* RobotNames.swift */; };
-		50724CA21FA622230073A220 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50724CA11FA622230073A220 /* Images.swift */; };
+		50724CA21FA622230073A220 /* Caracter+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50724CA11FA622230073A220 /* Caracter+Images.swift */; };
 		50724CA41FA645580073A220 /* SafeReadLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50724CA31FA645580073A220 /* SafeReadLine.swift */; };
-		5084F90E1FA1D0B300256A73 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084F90D1FA1D0B300256A73 /* Players.swift */; };
+		5084F90E1FA1D0B300256A73 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084F90D1FA1D0B300256A73 /* Player.swift */; };
 		5084F9101FA1D12100256A73 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084F90F1FA1D12100256A73 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,16 +42,16 @@
 		505177461FA073230007C8E9 /* Projet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		505177491FA073230007C8E9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		505177501FA09ACD0007C8E9 /* Caracters_mother.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caracters_mother.swift; sourceTree = "<group>"; };
-		505177531FA09B9C0007C8E9 /* Weapons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapons.swift; sourceTree = "<group>"; };
-		505177551FA09C220007C8E9 /* Chests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chests.swift; sourceTree = "<group>"; };
-		505177571FA0ACB80007C8E9 /* Caracters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caracters.swift; sourceTree = "<group>"; };
+		505177531FA09B9C0007C8E9 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		505177551FA09C220007C8E9 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
+		505177571FA0ACB80007C8E9 /* Caracter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caracter.swift; sourceTree = "<group>"; };
 		505177591FA0B6D80007C8E9 /* ErrorsLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsLog.swift; sourceTree = "<group>"; };
-		5059A3E21FA39E4600F40233 /* Powers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Powers.swift; sourceTree = "<group>"; };
+		5059A3E21FA39E4600F40233 /* Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
 		505CDCA51FB087CD0003A17C /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		505CDCA71FB0A4470003A17C /* RobotNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotNames.swift; sourceTree = "<group>"; };
-		50724CA11FA622230073A220 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		50724CA11FA622230073A220 /* Caracter+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Caracter+Images.swift"; sourceTree = "<group>"; };
 		50724CA31FA645580073A220 /* SafeReadLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeReadLine.swift; sourceTree = "<group>"; };
-		5084F90D1FA1D0B300256A73 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
+		5084F90D1FA1D0B300256A73 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5084F90F1FA1D12100256A73 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				505177591FA0B6D80007C8E9 /* ErrorsLog.swift */,
-				50724CA11FA622230073A220 /* Images.swift */,
+				50724CA11FA622230073A220 /* Caracter+Images.swift */,
 				503DD3191FABA12F009DDBDF /* RandomNames.swift */,
 				505CDCA71FB0A4470003A17C /* RobotNames.swift */,
 				50724CA31FA645580073A220 /* SafeReadLine.swift */,
@@ -100,11 +100,11 @@
 			children = (
 				505177491FA073230007C8E9 /* main.swift */,
 				505177521FA09AD60007C8E9 /* Caracters */,
-				505177551FA09C220007C8E9 /* Chests.swift */,
-				505177531FA09B9C0007C8E9 /* Weapons.swift */,
-				5084F90D1FA1D0B300256A73 /* Players.swift */,
+				505177551FA09C220007C8E9 /* Chest.swift */,
+				505177531FA09B9C0007C8E9 /* Weapon.swift */,
+				5084F90D1FA1D0B300256A73 /* Player.swift */,
 				5084F90F1FA1D12100256A73 /* Game.swift */,
-				5059A3E21FA39E4600F40233 /* Powers.swift */,
+				5059A3E21FA39E4600F40233 /* Power.swift */,
 				505CDCA51FB087CD0003A17C /* Robot.swift */,
 				503DD31B1FABA139009DDBDF /* Supporting functions */,
 			);
@@ -115,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				505177501FA09ACD0007C8E9 /* Caracters_mother.swift */,
-				505177571FA0ACB80007C8E9 /* Caracters.swift */,
+				505177571FA0ACB80007C8E9 /* Caracter.swift */,
 			);
 			path = Caracters;
 			sourceTree = "<group>";
@@ -178,20 +178,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5059A3E31FA39E4600F40233 /* Powers.swift in Sources */,
-				505177541FA09B9C0007C8E9 /* Weapons.swift in Sources */,
+				5059A3E31FA39E4600F40233 /* Power.swift in Sources */,
+				505177541FA09B9C0007C8E9 /* Weapon.swift in Sources */,
 				50724CA41FA645580073A220 /* SafeReadLine.swift in Sources */,
 				5051775A1FA0B6DA0007C8E9 /* ErrorsLog.swift in Sources */,
-				505177561FA09C220007C8E9 /* Chests.swift in Sources */,
+				505177561FA09C220007C8E9 /* Chest.swift in Sources */,
 				503DD31A1FABA12F009DDBDF /* RandomNames.swift in Sources */,
-				50724CA21FA622230073A220 /* Images.swift in Sources */,
-				5084F90E1FA1D0B300256A73 /* Players.swift in Sources */,
+				50724CA21FA622230073A220 /* Caracter+Images.swift in Sources */,
+				5084F90E1FA1D0B300256A73 /* Player.swift in Sources */,
 				505177511FA09ACD0007C8E9 /* Caracters_mother.swift in Sources */,
 				505CDCA61FB087CD0003A17C /* Robot.swift in Sources */,
 				5051774A1FA073230007C8E9 /* main.swift in Sources */,
 				504C75F11FACA846000E7E6F /* SlowWriting.swift in Sources */,
 				505CDCA81FB0A4470003A17C /* RobotNames.swift in Sources */,
-				505177581FA0ACB80007C8E9 /* Caracters.swift in Sources */,
+				505177581FA0ACB80007C8E9 /* Caracter.swift in Sources */,
 				5084F9101FA1D12100256A73 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

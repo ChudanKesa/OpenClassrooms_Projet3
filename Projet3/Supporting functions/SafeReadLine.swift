@@ -163,7 +163,7 @@ extension Support
         print("\tWELCOME to the cheat area.\n")
         
         
-        var tab = [Caracters]()
+        var tab = [Caracter]()
         var select = Int()
         var alsoselect = Int()
         var number = 1
@@ -201,7 +201,7 @@ extension Support
     // adapting the cheat to 1P mode turned out harder than expected. A new function seemed like the right way to go.
     
     
-    static func cheat1P(robotFighters: [Caracters]) -> Int
+    static func cheat1P(robotFighters: [Caracter]) -> Int
     {
         var select = Int()
         
@@ -259,7 +259,7 @@ extension Support
     /////////////////////////////////////////////////////////////////////////////////////
     // another cheating function for 1P mode, because i couldn't seem to do it otherwise.
     
-    static func cheat1P(robotFighters: [Caracters], lowerLimit: Int, upperLimit: Int) -> Int
+    static func cheat1P(robotFighters: [Caracter], lowerLimit: Int, upperLimit: Int) -> Int
     {
         var select = Int()
         

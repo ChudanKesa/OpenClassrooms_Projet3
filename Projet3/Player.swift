@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Players
+class Player
 {
-    var party = [Caracters]()
+    var party = [Caracter]()
     var lastOneStanding = false
     var name: String
     
@@ -88,16 +88,16 @@ class Players
                     print("Choose your caracter n°\(i) :")
                     usleep(12 * 100 * 1000)
                     print("1. A Warrior. ⚔")
-                    print(Caracters.caracterDescription(caste: .warrior))
+                    print(Caracter.caracterDescription(caste: .warrior))
                     usleep(10 * 100 * 1000)
                     print("2. A Wizzard. 🔮")
-                    print(Caracters.caracterDescription(caste: .wizzard))
+                    print(Caracter.caracterDescription(caste: .wizzard))
                     usleep(10 * 100 * 1000)
                     print("3. A Giant. 👹")
-                    print(Caracters.caracterDescription(caste: .giant))
+                    print(Caracter.caracterDescription(caste: .giant))
                     usleep(10 * 100 * 1000)
                     print("4. A Dwarf. 🍺")
-                    print(Caracters.caracterDescription(caste: .dwarf))
+                    print(Caracter.caracterDescription(caste: .dwarf))
                     
                     switch Support.secureInt(lowerLimit: 1, upperLimit: 4)
                     {
@@ -241,13 +241,13 @@ class Players
                     print("""
                         Choose your caracter n°\(i) :
                         1. A Warrior. ⚔
-                        \(Caracters.caracterDescription(caste: .warrior))
+                        \(Caracter.caracterDescription(caste: .warrior))
                         2. A Wizzard. 🔮
-                        \(Caracters.caracterDescription(caste: .wizzard))
+                        \(Caracter.caracterDescription(caste: .wizzard))
                         3. A Giant. 👹
-                        \(Caracters.caracterDescription(caste: .giant))
+                        \(Caracter.caracterDescription(caste: .giant))
                         4. A Dwarf. 🍺
-                        \(Caracters.caracterDescription(caste: .dwarf))
+                        \(Caracter.caracterDescription(caste: .dwarf))
                         """)
 
                     

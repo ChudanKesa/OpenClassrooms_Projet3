@@ -11,7 +11,7 @@ import Foundation
 class Game // the game itself, contains tab of players and a Bool for whether to keep playing
 {
     
-    var players = [Players]()
+    var players = [Player]()
     var keepPlaying = true
     
     // ↓ asks for # of players, takes their names and put them in 'players'
@@ -122,7 +122,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
                     if let name = readLine()
                     {
                         print("\n")
-                        players.append(Players(name: name))
+                        players.append(Player(name: name))
                         tryInputAgain = false
                     }
                     else
@@ -147,14 +147,14 @@ class Game // the game itself, contains tab of players and a Bool for whether to
     
     // ↓ one fighting turn for each player registered in *players*
     
-    func playGame(players: [Players])
+    func playGame(players: [Player])
     {
         var powerPresent = false
         var numberOfPowers = 0
         var powerPosition = [Int]()
         
-        var target: Caracters
-        var targetsRepository = [Caracters]()
+        var target: Caracter
+        var targetsRepository = [Caracter]()
         
         var totalEnnemiesLeft = Int()
         var totalAlliesLeft = Int()
@@ -561,7 +561,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
     
     // ↓ makes players keep playing until one of them looses all of their party, then asks if they want to play again.
     
-    func finishGame(tab: [Players]) -> Bool
+    func finishGame(tab: [Player]) -> Bool
     {
         var players = tab
         var victory = false

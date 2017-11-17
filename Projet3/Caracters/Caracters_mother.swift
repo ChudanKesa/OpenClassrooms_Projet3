@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Caracters // basis for the caracters used in the game.
+class Caracter // basis for the caracters used in the game.
                 // They all need a name, a type (-> Class), life points, and a weapon.
 {
     enum Class: String
@@ -24,13 +24,13 @@ class Caracters // basis for the caracters used in the game.
     
     var lifePoints: Int
     var maxLifePoints: Int
-    var weapon : Weapons
+    var weapon : Weapon
     var name: String
     var caste: Class
     
     var auto = false
     
-    init(lifePoints: Int, weapon: Weapons, name: String)
+    init(lifePoints: Int, weapon: Weapon, name: String)
     {
         self.lifePoints = lifePoints
         maxLifePoints = lifePoints
@@ -41,7 +41,7 @@ class Caracters // basis for the caracters used in the game.
     
     convenience init()
     {
-        self.init(lifePoints: 100, weapon: bareHands, name: "Unnamed warrior")
+        self.init(lifePoints: 100, weapon: Weapon(name: "Bare hands", damage: 3), name: "Unnamed warrior")
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +50,7 @@ class Caracters // basis for the caracters used in the game.
     
     // function for attacking
     
-    func attack(weapon: Weapons, target: Caracters)
+    func attack(weapon: Weapon, target: Caracter)
     {
         target.lifePoints -= weapon.damage
         print("The attack was effective. \(target.name) has taken \(weapon.damage) points of damage.")
@@ -66,7 +66,7 @@ class Caracters // basis for the caracters used in the game.
 // ----------------------------
     // to be used in the game to change the weapon of caracters. Could be done with openChest directly, but this feels more clear.
     
-    func newWeapon(caracter: Caracters)
+    func newWeapon(caracter: Caracter)
     {
         caracter.weapon = Chest.openChest(caste: caracter.caste)
         if caracter is Wizzard
@@ -86,7 +86,6 @@ class Caracters // basis for the caracters used in the game.
         var error = true
         
         
-        
         while error
         {
             read = readLine()
@@ -96,15 +95,57 @@ class Caracters // basis for the caracters used in the game.
                 name = read!
                 if name == ""
                 {
-                    name = Support.randomNames()
+                    name = autoName(read: name)
                 }
-                error = false
+                error = nameTaken(name: name)
+                if error == true
+                {
+                    print("This name has alredy been taken. Please choose a new one.\n")
+                }
             }
             else
             {
                 print("Problem with entry. Please try again.")
                 error = true
             }
+        }
+        return name
+    }
+    
+    //////////
+    // checks if name is already taken
+    
+    private func nameTaken(name entry: String) -> Bool
+    {
+        var nameTaken = false
+
+        for i in 0..<game.players.count
+        {
+            for j in 0..<game.players[i].party.count
+            {
+                if entry == game.players[i].party[j].name
+                {
+                    nameTaken = true
+                }
+            }
+        }
+        
+        return nameTaken
+    }
+    
+    //////////
+    // gives name and checks if it's already attributed
+    // cannot be private due to use in Caracter -> auto init
+    
+    func autoName(read: String) -> String
+    {
+        var name = ""
+        var error = true
+        
+        while error
+        {
+            name = Support.randomNames()
+            error = nameTaken(name: name)
         }
         
         return name
@@ -142,7 +183,7 @@ class Caracters // basis for the caracters used in the game.
     
     // set up here wich classes must be adressed with "a" or "an". Also add the class symbol after call.
 
-    func adressCaracter(caracter: Caracters) -> String
+    func adressCaracter(caracter: Caracter) -> String
     {
         if caracter.caste.rawValue[caracter.caste.rawValue.index(caracter.caste.rawValue.startIndex, offsetBy: 0)] == "A" ||
             caracter.caste.rawValue[caracter.caste.rawValue.index(caracter.caste.rawValue.startIndex, offsetBy: 0)] == "O" ||

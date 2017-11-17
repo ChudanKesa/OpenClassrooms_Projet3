@@ -11,13 +11,13 @@ import Foundation
 class Robot // IA fighting. Nothing more than a player that gets everything choosen automatically.
 {
     var name: String // <- this to compare with players[0].name and make sure they're the same
-    var robotFighters = [Caracters]()
+    var robotFighters = [Caracter]()
     
     init()
     {
         print("You will fight against an IA. What is your name ?")
         name = Support.askForString()
-        game.players.append(Players(name: name))
+        game.players.append(Player(name: name))
             if name != game.players[0].name
             {
                 Support.errorLog(origin: "\(#file)", detail: "\(#line) : error registering player")
@@ -113,8 +113,8 @@ class Robot // IA fighting. Nothing more than a player that gets everything choo
         var numberOfPowers = 0
         var powerPosition = [Int]()
         
-        var target: Caracters
-        var targetsRepository = [Caracters]()
+        var target: Caracter
+        var targetsRepository = [Caracter]()
         
         var totalEnnemiesLeft = Int()
         var totalAlliesLeft = Int()
@@ -511,7 +511,7 @@ class Robot // IA fighting. Nothing more than a player that gets everything choo
         var attacker = Int()
         
         var turnAction = Action.attack
-        var healTarget: Caracters?
+        var healTarget: Caracter?
         {
             didSet
             {
@@ -535,7 +535,7 @@ class Robot // IA fighting. Nothing more than a player that gets everything choo
                 }
             }
         }
-        var target: Caracters?
+        var target: Caracter?
         {
             didSet
             {
