@@ -17,16 +17,13 @@ class Game // the game itself, contains tab of players and a Bool for whether to
     
     func startGame() // asks for # of players, takes their names and put them in 'players'
     {
-        var numberOfPlayers = 0
         
         emptyTabPlayers()
-        numberOfPlayers = getNPlayers()
- 
-        setPlayers(numberOfPlayers: numberOfPlayers)
+        setPlayers(numberOfPlayers: getNPlayers())
         setParties()
     }
     
-    private func emptyTabPlayers()
+    private func emptyTabPlayers() // empties players so the game can start anew
     {
         for i in (0..<players.count).reversed()
         {
@@ -34,7 +31,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func getNPlayers() -> Int
+    private func getNPlayers() -> Int // gets the number of people playing
     {
         var validated = false
         var nPlayers = 0
@@ -48,7 +45,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return nPlayers
     }
     
-    private func confirmNPlayers() -> Bool
+    private func confirmNPlayers() -> Bool // confirms the number of people playing
     {
         var validated = false
         
@@ -72,7 +69,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return validated
     }
     
-    private func readNPlayers() -> Int
+    private func readNPlayers() -> Int // asks for number of people playing
     {
         var numberOfPlayers = 0
         
@@ -97,7 +94,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return numberOfPlayers
     }
     
-    private func setPlayers(numberOfPlayers: Int)
+    private func setPlayers(numberOfPlayers: Int) // set game mode depending on # of players. If # >= 2, gets the players' names.
     {
         if numberOfPlayers == 0
         {
@@ -116,7 +113,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func getPlayersNames(numberOfPlayers: Int)
+    private func getPlayersNames(numberOfPlayers: Int) // gets the players' names.
     {
         var name = ""
         print("Please enter the names of the players.")
@@ -129,7 +126,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func setParties()
+    private func setParties() // lets players choose their fighters
     {
         for i in 0..<players.count
         {
@@ -146,13 +143,8 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         var numberOfPowers = 0
         var powerPosition = [Int]()
         
-        var target: Caracter
-        
         var totalEnnemiesLeft = Int()
         var totalAlliesLeft = Int()
-        
-        
-        var select = 0 // value will be used for whatever needs and Int as an answer
         
         
         for i in 0..<players.count
@@ -168,66 +160,79 @@ class Game // the game itself, contains tab of players and a Bool for whether to
                 
                 if powerPresent == true
                 {
-                    switch actionChoice()
-                    {
-                    case 1:
-                        select = chooseAttacker(i: i)
-                        
-                        if totalEnnemiesLeft == 1
-                        {
-                            target = autoTarget(i: i)
-                        }
-                        else
-                        {
-                            target = chooseTarget(i: i)
-                        }
-                        
-                        attack(i: i, target: target, select: select)
-                        
-                        
-                    case 2:
-                        if numberOfPowers == 1
-                        {
-                            oneWayHeal(i: i, powerPosition: powerPosition, position: 0)
-                        }
-                        else
-                        {
-                            select = chooseWhoHeals(i: i, powerPosition: powerPosition)
-                            magicHappens(i: i, powerPosition: powerPosition, position: select)
-                        }
-                    default:
-                        Support.errorLog(origin: "Game", detail: "\(#line) : 'select' error")
-                    }
-                    
-                } // if powerPresent
+                    chooseHealOrAttack(i: i, powerPosition: powerPosition, totalEnnemiesLeft: totalEnnemiesLeft, numberOfPowers: numberOfPowers)
+                }
                 else
                 {
-                    select = chooseAttacker(i: i)
-                    
-                    if totalEnnemiesLeft == 1
-                    {
-                        target = autoTarget(i: i)
-                    }
-                        
-                    else
-                    {
-                        target = chooseTarget(i: i)
-                    }
-                    
-                    attack(i: i, target: target, select: select)
-                    
-                    
-                } // if !powerPresent
+                    autoAttack(i: i, totalEnnemiesLeft: totalEnnemiesLeft)
+                }
                 
                 lastOneStanding()
                 removeTheDead()
                 
-            } // if totalEnnemies >= 1 && totalAllies > 0
+            }
             
-        } // for i in 0_players.count
+        }
     }
     
-    private func getTotalEnnemiesLeft(i: Int) -> Int
+    private func chooseHealOrAttack(i: Int, powerPosition: [Int], totalEnnemiesLeft: Int, numberOfPowers: Int) // if a healer is present, choose whether to heal or attack
+    {
+        var select = 0
+        var target: Caracter
+        
+        switch actionChoice()
+        {
+        case 1:
+            select = chooseAttacker(i: i)
+            
+            if totalEnnemiesLeft == 1
+            {
+                target = autoTarget(i: i)
+            }
+            else
+            {
+                target = chooseTarget(i: i)
+            }
+            
+            attack(i: i, target: target, select: select)
+            
+            
+        case 2:
+            if numberOfPowers == 1
+            {
+                oneWayHeal(i: i, powerPosition: powerPosition, position: 0)
+            }
+            else
+            {
+                select = chooseWhoHeals(i: i, powerPosition: powerPosition)
+                magicHappens(i: i, powerPosition: powerPosition, position: select)
+            }
+        default:
+            Support.errorLog(origin: "Game", detail: "\(#line) : 'select' error")
+        }
+    }
+    
+    private func autoAttack(i: Int, totalEnnemiesLeft: Int) // auto attack mode if no healer is present
+    {
+        var select = 0
+        var target: Caracter
+        
+        select = chooseAttacker(i: i)
+        
+        if totalEnnemiesLeft == 1
+        {
+            target = autoTarget(i: i)
+        }
+            
+        else
+        {
+            target = chooseTarget(i: i)
+        }
+        
+        attack(i: i, target: target, select: select)
+    }
+    
+    private func getTotalEnnemiesLeft(i: Int) -> Int // gets # of ennemies remaining
     {
         var totalEnnemiesLeft = 0
         
@@ -242,7 +247,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return totalEnnemiesLeft
     }
     
-    private func getTotalAlliesLeft(i: Int) -> Int
+    private func getTotalAlliesLeft(i: Int) -> Int // gets # of allies remaining
     {
         var totalAlliesLeft = 0
         
@@ -257,7 +262,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return totalAlliesLeft
     }
     
-    private func powerCount(powerPresent: inout Bool, powerPosition: inout [Int], numberOfPowers: inout Int, i: Int)
+    private func powerCount(powerPresent: inout Bool, powerPosition: inout [Int], numberOfPowers: inout Int, i: Int) // gets # and positions of healers
     {
         numberOfPowers = 0
         powerPresent = false
@@ -278,7 +283,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func actionChoice() -> Int
+    private func actionChoice() -> Int // asks what to do
     {
         print("""
             What will you do ?
@@ -289,13 +294,13 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return Support.secureInt(lowerLimit: 1, upperLimit: 2)
     }
     
-    private func callPlayer(i: Int)
+    private func callPlayer(i: Int) // calls players whose turn it is
     {
         print("\(players[i].name), it's your turn.")
         usleep(1 * 100 * 1000)
     }
     
-    private func chooseAttacker(i: Int) -> Int
+    private func chooseAttacker(i: Int) -> Int // choose Caracter whom attack
     {
         var select = 0
         
@@ -326,7 +331,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return select
     }
     
-    private func autoTarget(i: Int) -> Caracter
+    private func autoTarget(i: Int) -> Caracter // when only one opponent remains, automaticly attacks him
     {
         var target = players[0].party[0]
         
@@ -344,7 +349,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return target
     }
     
-    private func chooseTarget(i: Int) -> Caracter
+    private func chooseTarget(i: Int) -> Caracter // choose whom to attack
     {
         var targetsRepository = [Caracter]()
         var select = 0
@@ -394,7 +399,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         players[i].party[select-1].attack(weapon: players[i].party[select-1].weapon, target: target)
     }
     
-    private func oneWayHeal(i: Int, powerPosition: [Int], position: Int)
+    private func oneWayHeal(i: Int, powerPosition: [Int], position: Int) // if there's only one wizzard, only the target of the heal has to be choosen
     {
         if players[i].party[powerPosition[0]] is Wizzard
         {
@@ -409,7 +414,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         } // if caracter is Wizzard -> useless for now but will be used when powers are added
     }
     
-    private func multiHeal(i: Int, powerPosition: [Int], position: Int)
+    private func multiHeal(i: Int, powerPosition: [Int], position: Int) // all the text and decorations needed to call power.multiheal
     {
         print("Thanks to his Long staff, \(players[i].party[powerPosition[position]].name) will heal the entire party !")
         usleep(5 * 100 * 1000)
@@ -423,7 +428,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func chooseWhoToHeal(i: Int, powerPosition: [Int], position: Int)
+    private func chooseWhoToHeal(i: Int, powerPosition: [Int], position: Int) // choose who gets the heal
     {
         var select = Int()
         var target =  game.players[0].party[0]
@@ -436,14 +441,14 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
         select = Support.secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
         target = players[i].party[select-1]
-        print("\(players[i].party[powerPosition[0]].name) uses \((players[i].party[powerPosition[0]] as! Wizzard).power.useHeal(target: target)) on \(target.name) !")
+        print("\(players[i].party[powerPosition[position]].name) uses \((players[i].party[powerPosition[position]] as! Wizzard).power.useHeal(target: target)) on \(target.name) !")
         usleep(1 * 100 * 1000)
         print("\(target.name) has \(target.lifePoints) life points.")
         target.lifeBar(caracter: target)
         usleep(1 * 1000 * 1000)
     }
     
-    private func chooseWhoHeals(i: Int, powerPosition: [Int]) -> Int
+    private func chooseWhoHeals(i: Int, powerPosition: [Int]) -> Int // if there are several healers, choose which one acts
     {
         var select = 0
         
@@ -458,40 +463,27 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         return powerPosition[select-1]
     }
     
-    private func magicHappens(i: Int, powerPosition: [Int], position: Int)
+    private func magicHappens(i: Int, powerPosition: [Int], position: Int) // use of healing functions when there are several healers -> follows chooseWhoHeals.
     {
-        var alsoselect = 0
-        var target = game.players[0].party[0]
         
-        switch players[i].party[position]
+        
+        switch players[i].party[powerPosition[position]]
         {
         case is Wizzard:
-            if players[i].party[position].weapon.name == "Long staff"
+            if players[i].party[powerPosition[position]].weapon.name == "Long staff"
             {
                 multiHeal(i: i, powerPosition: powerPosition, position: position)
             }
             else
             {
-                print("Who do you want to heal ?")
-                for y in 0..<players[i].party.count
-                {
-                    usleep(1 * 100 * 1000)
-                    print("\(y+1). \(players[i].party[y].name)", terminator: " "); players[i].party[y].symbol(caste: players[i].party[y]); print(players[i].party[y].percent(life: players[i].party[y]))
-                }
-                alsoselect = Support.secureInt(lowerLimit: 1, upperLimit: players[i].party.count)
-                target = players[i].party[alsoselect-1]
-                print("\(players[i].party[position].name) uses \((players[i].party[position] as! Wizzard).power.useHeal(target: target)) on \(target.name) !")
-                usleep(1 * 100 * 1000)
-                print("\(target.name) has \(target.lifePoints) life points.")
-                target.lifeBar(caracter: target)
-                usleep(1 * 1000 * 1000)
+                chooseWhoToHeal(i: i, powerPosition: powerPosition, position: position)
             }
         default:
             Support.errorLog(origin: "Game", detail: "l.\(#line) : power choice")
         }
     }
     
-    private func lastOneStanding()
+    private func lastOneStanding() // checks if there is only one dying caracter left in a party (so he can still get a turn before dying)
     {
         for l in 0..<game.players.count
         {
@@ -508,7 +500,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func removeTheDead()
+    private func removeTheDead() // remove dead caracters of party
     {
         var deceased = [(Int, Int)]()
         
@@ -535,7 +527,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func lastOneStandingCall(e: Int)
+    private func lastOneStandingCall(e: Int) // text to call when lastonestanding == true
     {
         sleep(1)
         print("\nOh no ! \(players[e].party[0].name) is dying !")
@@ -544,7 +536,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         usleep(15 * 100 * 1000)
     }
 
-    private func voidDeceased(deceased: [(Int, Int)])
+    private func voidDeceased(deceased: [(Int, Int)]) // remove dead caracters from party
     {
         for t in (0..<deceased.count).reversed()
         {
@@ -552,7 +544,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         }
     }
     
-    private func announceDeceased(e: Int, j: Int, deceased: inout [(Int, Int)])
+    private func announceDeceased(e: Int, j: Int, deceased: inout [(Int, Int)]) // calls out names of fallen warriors
     {
         print("\n\t", terminator: "")
         switch Int(arc4random_uniform(UInt32(6)))
@@ -586,151 +578,120 @@ class Game // the game itself, contains tab of players and a Bool for whether to
     
     // ↓ makes players keep playing until one of them looses all of their party, then asks if they want to play again.
     
-    func finishGame(tab: [Player]) -> Bool
+    func finishGame() -> Bool
     {
-        var players = tab
         var victory = false
-        var removal = [Int]()
         
-        if game.players.count > 0
-        {
-            victory = false
+        victory = false
             
-            while !victory
-            {
-                game.playGame(players: game.players)
-                
-                for i in 0..<game.players.count
-                {
-                    if game.players[i].party.count == 0
-                    {
-                        print("\n\t")
-                        Support.slowWriting(sentence: "\(game.players[i].name)'s party was defeated...")
-                        sleep(1)
-                        print("\t", terminator: "")
-                        Support.slowWriting(sentence: "\(game.players[i].name) lost.")
-                        removal.append(i)
-                    }
-                }
-                
-                print("""
-                        *************
-                        CAP
-                        *************
-                    """)
-                
-                
-                for i in (0..<removal.count).reversed()
-                {
-                    print("\n\t\(game.players[removal[i]]) is removed.\n")
-                    game.players.remove(at: removal[i])
-                }
-                
-                if game.players.count == 1
-                {
-                    print("\n")
-                    sleep(1)
-                    print("\n")
-                    sleep(1)
-                    print(" **\\o/**\\o/**\\o/**\\o/**")
-                    print("\t", terminator: "")
-                    Support.slowWriting(sentence: "Congratulations, \(game.players[0].name) ! You vanquished your opponents. This game is yours !")
-                    print("\n")
-                    sleep(1)
-                    print("\n")
-                    sleep(1)
-                    print("Do you want to play again ?\nY/N")
-                    switch Support.askYN()
-                    {
-                    case "y":
-                        game.keepPlaying = true
-                        print("Prepare !")
-                        sleep(1)
-                        print("")
-                        sleep(1)
-                        print("")
-                        players.remove(at: 0)
-                    case "Y":
-                        game.keepPlaying = true
-                        print("Prepare !")
-                        sleep(1)
-                        print("")
-                        sleep(1)
-                        print("")
-                        players.remove(at: 0)
-                    case "n":
-                        game.keepPlaying = false
-                        print("\t************\n\t", terminator: "")
-                        print("Thanks for playing !")
-                        print("\n")
-                        sleep(1)
-                        print("")
-                        sleep(1)
-                        print("")
-                    case "N":
-                        game.keepPlaying = false
-                        print("\t************\n\t", terminator: "")
-                        print("Thanks for playing !")
-                        print("\n")
-                        sleep(1)
-                        print("")
-                        sleep(1)
-                        print("")
-                    default:
-                        Support.errorLog(origin: "\(#file)", detail: "\(#line)")
-                    }
-                    
-                    
-                    victory = true
-                } // if players.count == 1
-            } // while !victory
-            
-        }
-        
-        else
+        while !victory
         {
-            print("Do you want to play again ?\nY/N")
-            switch Support.askYN()
-            {
-            case "y":
-                game.keepPlaying = true
-                print("Prepare !")
-                sleep(1)
-                print("")
-                sleep(1)
-                print("")
-            case "Y":
-                game.keepPlaying = true
-                print("Prepare !")
-                sleep(1)
-                print("")
-                sleep(1)
-                print("")
-            case "n":
-                game.keepPlaying = false
-                print("\t************\n\t", terminator: "")
-                print("Thanks for playing !")
-                print("\n")
-                sleep(1)
-                print("")
-                sleep(1)
-                print("")
-            case "N":
-                game.keepPlaying = false
-                print("\t************\n\t", terminator: "")
-                print("Thanks for playing !")
-                print("\n")
-                sleep(1)
-                print("")
-                sleep(1)
-                print("")
-            default:
-                Support.errorLog(origin: "\(#file)", detail: "\(#line)")
-            }
+            game.playGame(players: game.players)
+            removeDeadPlayers()
+            victory = clearVictory()
         }
+
         
         return game.keepPlaying
     }
+    
+    private func removeDeadPlayers() // remove players that lost from [players]
+    {
+        var removal = [Int]()
+        
+        for i in 0..<game.players.count
+        {
+            if game.players[i].party.count == 0
+            {
+                print("\n\t")
+                Support.slowWriting(sentence: "\(game.players[i].name)'s party was defeated...")
+                sleep(1)
+                print("\t", terminator: "")
+                Support.slowWriting(sentence: "\(game.players[i].name) lost.")
+                removal.append(i)
+            }
+        }
+        
+        
+        
+        for i in (0..<removal.count).reversed()
+        {
+            game.players.remove(at: removal[i])
+        }
+    }
+    
+    private func clearVictory() -> Bool // gets victory status to keep or get out of the loop.
+    {
+        if game.players.count <= 1
+        {
+            announceVictory()
+            switch Support.askYN()
+            {
+            case "y":
+                prepare()
+            case "Y":
+                prepare()
+            case "n":
+                endGame()
+            case "N":
+                endGame()
+            default:
+                Support.errorLog(origin: "\(#file)", detail: "\(#line)")
+            }
+            return true
+        }
+            
+        else
+        {
+            return false
+        }
+    }
+    
+    private func announceVictory() // victory text, in case of victory.
+    {
+        if game.players.count == 1
+        {
+            print("\n")
+            sleep(1)
+            print("\n")
+            sleep(1)
+            print(" **\\o/**\\o/**\\o/**\\o/**")
+            print("\t", terminator: "")
+            Support.slowWriting(sentence: "Congratulations, \(game.players[0].name) ! You vanquished your opponents. This game is yours !")
+            print("\n")
+            sleep(1)
+            print("\n")
+        }
+        sleep(1)
+        print("Do you want to play again ?\nY/N")
+    }
+    
+    
+    private func prepare() // text + init if a new game starts
+    {
+        game.keepPlaying = true
+        print("Prepare !")
+        sleep(1)
+        print("")
+        sleep(1)
+        print("")
+        players.remove(at: 0)
+    }
+
+    private func endGame() // text + init if no new game start
+    {
+        game.keepPlaying = false
+        print("\t************\n\t", terminator: "")
+        print("Thanks for playing !")
+        print("\n")
+        sleep(1)
+        print("")
+        sleep(1)
+        print("")
+    }
+    
+    
+    
     
     // ↓ loop all of the above
     
@@ -742,7 +703,7 @@ class Game // the game itself, contains tab of players and a Bool for whether to
         {
             game.startGame()
             game.playGame(players: game.players)
-            keepPlaying = game.finishGame(tab: game.players)
+            keepPlaying = game.finishGame()
         }
     }
     

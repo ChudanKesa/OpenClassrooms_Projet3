@@ -57,7 +57,7 @@ class Player
     }
     
     
-    private func emptyParty()
+    private func emptyParty() // void party just to be sure before making a new one
     {
         if party.count > 0
         {
@@ -68,7 +68,7 @@ class Player
         }
     }
     
-    private func intro(nbPlayers: Int)
+    private func intro(nbPlayers: Int) // text to get players started
     {
         if nbPlayers == 1
         {
@@ -89,7 +89,7 @@ class Player
         }
     }
     
-    private func autoSet() -> Bool
+    private func autoSet() -> Bool // setting of auto
     {
         var auto = true
         
@@ -110,7 +110,7 @@ class Player
         return auto
     }
     
-    private func createRandParty()
+    private func createRandParty() // create random party of 3
     {
         for _ in 1...3
         {
@@ -130,7 +130,7 @@ class Player
         }
     }
 
-    private func createParty()
+    private func createParty() // lets players choose their party.
     {
         for i in 1...3
         {
@@ -165,7 +165,7 @@ class Player
     }
 
     
-    private func askConfirmParty()
+    private func askConfirmParty() // recap party and asks confirmation
     {
         usleep(1 * 100 * 1000)
         print("Your warriors has been chosen. You will fight with ")
@@ -190,7 +190,7 @@ class Player
         print("Is that correct ?\nY/N")
     }
     
-    private func doConfirmParty() -> Bool
+    private func doConfirmParty() -> Bool // text to show if party is either confirmed or cancelled + void of selected party
     {
         switch Support.askYN()
         {
@@ -225,7 +225,7 @@ class Player
         }
     }
     
-    private func wizzardSearch()
+    private func wizzardSearch() // makes note of how many wizzard and where there are.
     {
         for i in 0..<party.count
         {
