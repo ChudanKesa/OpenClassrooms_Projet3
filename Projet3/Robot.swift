@@ -26,7 +26,7 @@ class Robot // IA fighting. Nothing more than a player that gets everything choo
                 print("\n")
                 exit(1)
             }
-        game.players[0].onePlayerChooseParty()
+        game.players[0].chooseParty(nbPlayers: 1)
         
         robotFighters.append(Wizzard(robot: Support.robotNames()))
         
